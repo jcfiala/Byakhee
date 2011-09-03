@@ -1,0 +1,54 @@
+--------------------Configuration: ScriptEngine - Win32 Release--------------------
+Begining build with project "D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\ScriptEngine.dsp", at root.
+Active configuration is Win32 (x86) Static Library (based on Win32 (x86) Static Library)
+
+Project's tools are:
+			" (rc.exe)" with flags "/l 0x809 "
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/ScriptEngine.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c "
+			"Browser Database Maker" with flags "/nologo /o"Release/ScriptEngine.bsc" "
+			"Library Manager" with flags "/nologo /out:"Release\ScriptEngine.lib" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "D:\TEMP\RSP21.tmp" with contents </nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /Fp"Release/ScriptEngine.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\javascript.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\libyywrap.c"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\Variant.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\VariantArray.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\Script.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\Script_Math.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\ScriptingEngine.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\ScriptObject.cpp"
+"D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\PromptDialog.cpp"
+>
+Creating command line "cl.exe @D:\TEMP\RSP21.tmp" 
+Creating temp file "D:\TEMP\RSP22.tmp" with contents </nologo /out:"Release\ScriptEngine.lib" 
+".\Release\javascript.obj"
+".\Release\libyywrap.obj"
+".\Release\Variant.obj"
+".\Release\VariantArray.obj"
+".\Release\Script.obj"
+".\Release\Script_Math.obj"
+".\Release\ScriptingEngine.obj"
+".\Release\ScriptObject.obj"
+".\Release\PromptDialog.obj">
+Creating command line "link.exe -lib @D:\TEMP\RSP22.tmp" 
+Compiling...
+javascript.cpp
+D:\WINNT\Profiles\dah\Desktop\My Files\Byakhee 3 Source Code\ScriptEngine\javascript.cpp(20) : warning C4273: 'getenv' : inconsistent dll linkage.  dllexport assumed.
+lex.yy.c(4771) : warning C4273: '_isatty' : inconsistent dll linkage.  dllexport assumed.
+javascript.cpp(1809) : warning C4102: 'yyerrlab' : unreferenced label
+javascript.cpp(1809) : warning C4102: 'yynewerror' : unreferenced label
+libyywrap.c
+Variant.cpp
+VariantArray.cpp
+Script.cpp
+Script_Math.cpp
+ScriptingEngine.cpp
+ScriptObject.cpp
+PromptDialog.cpp
+Creating library...
+
+
+
+ScriptEngine.lib - 0 error(s), 4 warning(s)
