@@ -12,6 +12,8 @@
 #include "Byakhee.h"
 #include "Investigator.h"
 #include "NamedOptionManager.h"
+#include <afxstr.h>
+#include <atlimage.h>
 
 class CInvestigatorDoc : public CDocument
 {
@@ -44,7 +46,7 @@ public:
 public:
 	void StoreUndo();
 	BOOL SetPortrait( CString strPortrait );
-    class CImage* GetPortrait() { return m_pPortrait; };
+	class CImage* GetPortrait() { return m_pPortrait; };
 	BOOL ReloadPortrait();
 	void SetRuleFile( CString strRuleFile );
 	virtual ~CInvestigatorDoc();

@@ -51,7 +51,7 @@ protected:
 		afx_msg void OnMouseMove(UINT nFlags, CPoint point);
 	afx_msg void OnSetFocus(CWnd* pOldWnd);
 	//}}AFX_MSG
-    afx_msg void OnAppSettingsChange();
+    afx_msg LRESULT OnAppSettingsChange(WPARAM w, LPARAM l);
 	DECLARE_MESSAGE_MAP()
 
 private:

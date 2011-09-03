@@ -120,7 +120,7 @@ BOOL CSpellbookDlg::OnInitDialog()
 
     //add all current investigator's skills to the list box
     m_wndInvestigatorSpells.ResetContent();
-    const char* pszBuffer = m_strInvestigatorSpells;
+    char* pszBuffer = m_strInvestigatorSpells.GetBuffer();
     while( pszBuffer && *pszBuffer )
     {
         char* pszEnd = strchr(pszBuffer, ',');
@@ -152,20 +152,24 @@ void CSpellbookDlg::AddSpellBook(const char * pszFileName)
 
     //read the title
     CString strTitle = SpellBook.GetSection( "TITLE" );
+	char * psTitle = strTitle.GetBuffer();
     if( strTitle.IsEmpty() )
     {
         //trim off path and extension, if there is one, and use that for the title
-        char* pszTemp = strrchr(pszFileName, '\\');
-        if( pszTemp ) pszFileName = ++pszTemp;
-        pszTemp = strrchr(pszFileName, '.' );
+		char * psFileName;
+		psFileName = (char*)malloc(sizeof(char)*strlen(pszFileName));
+		strcpy(psFileName, pszFileName);
+        char* pszTemp = strrchr(psFileName, '\\');
+        if( pszTemp ) psFileName = ++pszTemp;
+        pszTemp = strrchr(psFileName, '.' );
         if( pszTemp ) *pszTemp = '\0';
-        strTitle = pszFileName;
+        strTitle = psFileName;
     }
     else
     {
         //find the end of the first line
-        char* pszTemp = strchr( strTitle, '\r' );
-        char* pszTemp2 = strchr( strTitle, '\n' );
+        char* pszTemp = strchr( psTitle, '\r' );
+        char* pszTemp2 = strchr( psTitle, '\n' );
         if( pszTemp != NULL || pszTemp2 != NULL )
         {
             //find the one nearest to the end of the first line
@@ -174,7 +178,7 @@ void CSpellbookDlg::AddSpellBook(const char * pszFileName)
 
             //terminate it at that point
             *pszTemp = '\0';
-            CString strTemp = LPCSTR(strTitle);
+            CString strTemp = LPCSTR(psTitle);
             *pszTemp = '\n';
             strTitle = strTemp;
         }

@@ -125,7 +125,7 @@ BOOL CHyperlink::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
 	return TRUE;
 }
 
-UINT CHyperlink::OnNcHitTest(CPoint point) 
+LRESULT CHyperlink::OnNcHitTest(CPoint point) 
 {
 	return HTCLIENT; //quick fix (Paul DiLascia)
 }

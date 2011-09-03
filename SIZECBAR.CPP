@@ -256,7 +256,7 @@ void CSizingControlBar::OnNcLButtonDown(UINT nHitTest, CPoint point)
         CControlBar::OnNcLButtonDown(nHitTest, point);
 }
 
-UINT CSizingControlBar::OnNcHitTest(CPoint point) 
+LRESULT CSizingControlBar::OnNcHitTest(CPoint point) 
 {
     if (IsFloating())
         return CControlBar::OnNcHitTest(point);

@@ -5,7 +5,7 @@
 #include "Byakhee.h"
 #include "MainFrm.h"
 #include "MultiFileMultiDocTemplate.h"
-#include "CImage/CImage.h"
+
 #include "RandomNameGenerator.h"
 #include "ParseBuffer.h"
 #include "DiceRoller.h"
@@ -112,7 +112,8 @@ BOOL CInvestigatorDoc::ReloadPortrait()
 
     //load new portrait
     ((CMainFrame*)AfxGetMainWnd())->SetStatusMessage( CString("Loading image ") + CString(m_Investigator.m_strPortrait) + CString("...") );
-    CImage* pNewPortrait = new CImage(m_Investigator.m_strPortrait);
+    CImage* pNewPortrait = new CImage();
+	pNewPortrait->Load(m_Investigator.m_strPortrait);
 	if( pNewPortrait->GetWidth() <= 0 || pNewPortrait->GetHeight() <= 0 )
 	{
 		delete pNewPortrait;

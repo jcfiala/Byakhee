@@ -840,7 +840,7 @@ void CInvestigator::DuplicateInvestigator( CInvestigator* destination ) const
     }
 
     /* add all main skills */
-    for( i = 0; i < m_SkillList.GetSize(); i++ )
+    for( int i = 0; i < m_SkillList.GetSize(); i++ )
     {
         CInvestigatorSkill* pInvestigatorSkill = m_SkillList.GetAt(i);
         if( pInvestigatorSkill )

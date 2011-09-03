@@ -785,13 +785,14 @@ void CNewDocumentDlg::OnFileOpen()
     ((CByakheeApp*)AfxGetApp())->OnFileOpen();
 }
 
-void CNewDocumentDlg::OnToolbarDropDown( NMTOOLBAR* lpnmt, LRESULT* pResult )
+void CNewDocumentDlg::OnToolbarDropDown( NMHDR* lpnmt, LRESULT* pResult )
 {
     CToolBarCtrl* pToolbar = (CToolBarCtrl*)GetDlgItem(IDC_TOOLBAR);
+	NMTOOLBAR* pTemp = (NMTOOLBAR*) lpnmt;
 
     //get the coordinates of the button
     RECT rc;
-    pToolbar->SendMessage( TB_GETRECT, lpnmt->iItem, (LPARAM)&rc );
+    pToolbar->SendMessage( TB_GETRECT, pTemp->iItem, (LPARAM)&rc );
     pToolbar->MapWindowPoints( NULL, (LPPOINT)&rc, 2 );
     
     //create a pop-up menu

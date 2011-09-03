@@ -18,7 +18,7 @@ IMPLEMENT_DYNCREATE(COptionsPage2, CPropertyPage)
 //IMPLEMENT_DYNCREATE(COptionsPage5, CPropertyPage)
 //IMPLEMENT_DYNCREATE(COptionsPage6, CPropertyPage)
 
-static g_crCustomColours[16] = { 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 
+static unsigned int g_crCustomColours[16] = { 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 
                                  0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 
                                  0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 
                                  0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF };

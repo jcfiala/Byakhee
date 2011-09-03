@@ -26,7 +26,8 @@
 
 #include "Field.h"
 #include "SheetCommand.h"
-#include "CImage/CImage.h"
+#include <afxstr.h>
+#include <atlimage.h>
 
 class CFieldManager;
 
@@ -47,7 +48,7 @@ public:
     void ChangeFont( CString strFaceName, int nPointSize, int nFontStyle = 0, int nRotation = 0, int nWeight = 0 );
     void DrawPicture( CString strFileName, CRect rc );
     void StretchPicture( CString strFileName, CRect rc );
-    void DrawImage( CImage* pImage, CRect rc );
+	void DrawImage( CImage* pImage, CRect rc );
     void DrawText( CString strText, CRect rc, DWORD dwDrawFlags );
     void DrawText( CString strText, CPoint pt, DWORD dwDrawFlags );
 

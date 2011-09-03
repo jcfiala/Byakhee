@@ -135,7 +135,8 @@ void CSheetDrawInfo::DrawPicture( CString strFileName, CRect rc )
 	SetCurrentDirectory( CByakheeApp::GetDefaultDirectory() );
 
     //determine file extension
-    char* pszExtension = strrchr(LPCSTR(strFileName), '.' );
+    //char * pszExtension = strrchr(LPCSTR(strFileName), '.' );
+	char * pszExtension = strrchr(strFileName.GetBuffer(), '.' );
     if( pszExtension ) pszExtension++; else return; //no extension
 
     //enhanced metafile
@@ -195,7 +196,8 @@ void CSheetDrawInfo::DrawPicture( CString strFileName, CRect rc )
     CWaitCursor Wait;
 
     ((CMainFrame*)AfxGetMainWnd())->SetStatusMessage( CString("Loading image ") + strFileName + CString("...") );
-    CImage* pImage = new CImage(strFileName);
+    CImage* pImage = new CImage();
+	pImage->Load(strFileName);
     ((CMainFrame*)AfxGetMainWnd())->SetStatusMessage( "" );
     if( pImage )
     {
@@ -210,7 +212,8 @@ void CSheetDrawInfo::StretchPicture( CString strFileName, CRect rc )
 	SetCurrentDirectory( CByakheeApp::GetDefaultDirectory() );
 
     //determine file extension
-    char* pszExtension = strrchr(LPCSTR(strFileName), '.' );
+    //char* pszExtension = strrchr(LPCSTR(strFileName), '.' );
+	char * pszExtension = strrchr(strFileName.GetBuffer(), '.');
     if( pszExtension ) pszExtension++; else return; //no extension
 
     //enhanced metafile
@@ -270,7 +273,8 @@ void CSheetDrawInfo::StretchPicture( CString strFileName, CRect rc )
     CWaitCursor Wait;
 
     ((CMainFrame*)AfxGetMainWnd())->SetStatusMessage( CString("Loading image ") + strFileName + CString("...") );
-    CImage* pImage = new CImage(strFileName);
+    CImage* pImage = new CImage();
+	pImage->Load(strFileName);
     ((CMainFrame*)AfxGetMainWnd())->SetStatusMessage( "" );
     if( pImage )
     {
@@ -278,16 +282,17 @@ void CSheetDrawInfo::StretchPicture( CString strFileName, CRect rc )
 	    {
             //set palette
             CPalette* pOldPalette = NULL;
-            if( pImage->GetPalette() )
+			// @TODO: Need to figure out what this Palette code was doing.
+            /*if( pImage->GetPalette() )
             {
 		        pOldPalette = m_pDC->SelectPalette( pImage->GetPalette(), TRUE );
 		        m_pDC->RealizePalette();
-            }
+            }*/
 
-            pImage->Stretch( m_pDC, rc.left, rc.top, rc.right, rc.bottom );
+            pImage->StretchBlt( m_pDC->m_hDC, rc.left, rc.top, rc.right, rc.bottom );
 
             //restore palette
-            m_pDC->SelectPalette(pOldPalette, FALSE);
+            //m_pDC->SelectPalette(pOldPalette, FALSE);
         }
 
         delete pImage;
@@ -303,11 +308,13 @@ void CSheetDrawInfo::DrawImage( CImage* pImage, CRect rc )
 	{
         //set palette
         CPalette* pOldPalette = NULL;
+		// @TODO: Need to figure out what the Palette was for.
+		/*
         if( pImage->GetPalette() )
         {
 		    pOldPalette = m_pDC->SelectPalette( pImage->GetPalette(), TRUE );
 		    m_pDC->RealizePalette();
-        }
+        }*/
 
         //do uniform scale
         int pw = pImage->GetWidth(), ph = pImage->GetHeight();
@@ -326,10 +333,10 @@ void CSheetDrawInfo::DrawImage( CImage* pImage, CRect rc )
         ox = (fw-dw) / 2;
         oy = (fh-dh) / 2;
         
-        pImage->Stretch( m_pDC, rc.left+ox, rc.bottom-oy, dw, -dh );
+		pImage->StretchBlt( m_pDC->m_hDC, rc.left+ox, rc.bottom-oy, dw, -dh );
 
         //restore palette
-        m_pDC->SelectPalette(pOldPalette, FALSE);
+        //m_pDC->SelectPalette(pOldPalette, FALSE);
     }
 }
 

@@ -40,7 +40,7 @@ END_MESSAGE_MAP()
 /////////////////////////////////////////////////////////////////////////////
 // CPopupWnd message handlers
 
-UINT CPopupWnd::OnNcHitTest(CPoint point) 
+LRESULT CPopupWnd::OnNcHitTest(CPoint point) 
 {
     //this allows the window to be moved just by dragging it around from anywhere
     return HTCAPTION;

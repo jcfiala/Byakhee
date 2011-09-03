@@ -68,7 +68,7 @@ protected:
 	afx_msg void OnFileOpen();
 	//}}AFX_MSG
     afx_msg BOOL OnToolTipText(UINT nID, NMHDR* pNMHDR, LRESULT* pResult);
-    afx_msg void OnToolbarDropDown( NMTOOLBAR* lpnmt, LRESULT* pResult );
+    afx_msg void OnToolbarDropDown( NMHDR* lpnmt, LRESULT* pResult );
     afx_msg void OnFileMRU( UINT uID );
 	DECLARE_MESSAGE_MAP()
 

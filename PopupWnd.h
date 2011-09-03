@@ -46,7 +46,7 @@ protected:
 
 
 	//{{AFX_MSG(CPopupWnd)
-	afx_msg UINT OnNcHitTest(CPoint point);
+	afx_msg LRESULT OnNcHitTest(CPoint point);
 	afx_msg void OnDevModeChange(LPTSTR lpDeviceName);
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()

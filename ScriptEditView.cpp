@@ -121,10 +121,11 @@ void CScriptEditView::UpdateLineNumber()
     ((CMainFrame*)AfxGetMainWnd())->GetStatusBar().SetPaneText( ((CMainFrame*)AfxGetMainWnd())->GetStatusBar().CommandToIndex(ID_INDICATOR_LINENUMBER), szLine );
 }
 
-void CScriptEditView::OnAppSettingsChange()
+LRESULT CScriptEditView::OnAppSettingsChange(WPARAM w, LPARAM l)
 {
     UpdateFont();	
     RedrawWindow();
+	return 0L;
 }
 
 void CScriptEditView::OnActivateView(BOOL bActivate, CView* pActivateView, CView* pDeactiveView) 

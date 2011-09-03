@@ -29,3 +29,7 @@
 // Microsoft Developer Studio will insert additional declarations immediately before the previous line.
 
 #endif // !defined(AFX_STDAFX_H__A9FB21C6_4B45_11D2_9FF9_00001C192944__INCLUDED_)
+
+// Suggested at http://support.microsoft.com/kb/309801 to handle unresolved external symbol errors.
+template class __declspec(dllimport) CStringT<TCHAR, StrTraitMFC<TCHAR, ChTraitsCRT<TCHAR> > >;
+template class __declspec(dllimport) CSimpleStringT<TCHAR>;
