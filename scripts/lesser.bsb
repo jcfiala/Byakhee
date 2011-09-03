@@ -1,0 +1,141 @@
+//lesser grimoire
+//created by David Harvey
+
+_BEGIN TITLE
+Lesser Grimoire
+_END TITLE
+
+_BEGIN SPELLS
+*Physical Manipulation*
+	"Become Spectral Hunter"
+	"Body Warping of Gorgoroth"
+	"Dampen Light"
+	"Hands of Colubra"
+	"Journey to the Other Side"
+	"Levitate"
+	"Living Clothes"
+	"Make Gate Boxes"
+
+*Mythos Protection*
+	"Cast Out Devil"
+	"Dust of Suleiman"
+	"Exhile Eihort"
+	"Eibon's Wheel of Mist"
+	"Eye of Light and Darkness"
+
+*Offensive Spells*
+	"Balk Brood"
+	"Clutch of Nyogtha"
+	"Death Spell"
+	"Devolution"
+	"Dissolve Skeleton"
+	"Explode Heart"
+	"Fist of Yog-Sothoth"
+	"Grasp of Cthulhu"
+	"Power Drain"
+	"Red Sign of Shutte M'ell"
+	"Song of Hastur"
+	"Steal Life"
+	"Wave of Oblivion"
+	"Wither Limb"
+	"Wrack"
+
+*Other Spells*
+	"Chant of Thoth"
+	"Conjure Glass of Mortlan"
+	"Find Gate"
+	"Free Hastur"
+	"Keeness of Two Alike"
+	"Look to the Future"
+	"Unspeakable Promises"
+
+*Defensive Spells*
+	"Deflect Harm"
+	"Flesh Ward"
+	"Heal"
+	"Seal of Isis"
+
+*Necromancy Spells*
+	"Black Binding"
+	"Consume Likeness"
+	"Create Zombie"
+	"Gray Binding"
+	"Raise Corpses"
+	"Remortification"
+
+*Mind Control Spells*
+	"Bait Humans"
+	"Bait Sand-Dwellers"
+	"Cloud Memory"
+	"Dominate"
+	"Enthrall Victim"
+	"Implant Fear"
+	"Mental Suggestion"
+	"Mesmerize"
+	"Mindblast"
+	"Mind Exchange"
+	"Mind Transfer"
+	"Nightmare"
+	"Send Dreaming"
+	"Send Dreams"
+	"Song of Glissande"
+	"Soul Singing"
+	"Voice of Ra"
+
+*Command Spells*
+	"Command Animal"
+	"Command Dhole"
+	"Command Ghost"
+
+*Call/Dismiss*
+	"Call Arwassa"
+	"Call The Beast"
+	"Call Power of Nyambe"
+
+*Summon/Bind Servitor*
+	"Summon/Bind Brother of Chaugnar Faugn"
+	"Summon/Bind Child of Atlach-Nacha"
+	"Summon/Bind Child of Yig"
+
+*Contact Spells*
+	"Contact Chaugnar Faugn"
+	"Contact Eihort"
+	"Contact Gnoph-Keh"
+	"Contact Rat-Thing"
+
+*Creation Spells*
+	"Create Bad-Corpse Dust"
+	"Create Barrier of Naach-Tith"
+	"Create Curse Whistle"
+	"Create Fetch Stick"
+	"Create Limbo Gate"
+	"Create Mist of R'lyeh"
+	"Create Scrying Window"
+	"Create Time Warp"
+//I remember doing the time warp...
+	"Create Window"
+	"Create Zombie" //zombie duplicated in Necromancy for completeness
+	
+*Curse Spells*
+	"Curse of Chaugnar Faugn"
+	"Curse of Darkness"
+	"Curse of the Rat-Thing"
+	"Curse of the Stone"
+
+*Enchantment Spells*
+	"Bless Blade"
+	"Chime of Tezchaptl"
+	"Pipes of Madness"
+	"Enchant Book"
+	"Enchant Brazier"
+	"Enchant Cane"
+	"Enchant Knife"
+	"Enchant Lance"
+	"Enchant Pipes"
+	"Enchant Sacrifical Dagger"
+	"Enchant Spear"
+	"Enchant Stone Tablet"
+	"Enchant Whistle"
+_END SPELLS
+
+//note: the author of the program can not be held responsible for any SAN loss owing to the use of these spells.

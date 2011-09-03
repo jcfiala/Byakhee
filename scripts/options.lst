@@ -1,0 +1,332 @@
+//options list file. No comments are allowed in the _BEGIN and _END blocks
+
+_BEGIN Abbreviations
+"Own Language"   "Own L."
+"Other Language" "Oth.L."
+"Submachine Gun" "SMG"
+"Mechanical Repair" "Mech. Repair"
+"Operate Hvy. Machine" "Op. Hvy. Mch."
+_END Abbreviations
+
+
+_BEGIN Art
+Painting
+Drawing
+Sculpture
+Engraving
+Printmaking
+Singing
+Music
+Calligraphy
+Cookery
+Printing
+Ventriloquism
+_END Art
+
+_BEGIN Craft
+Engraving
+Carpentry
+Cobbling
+Barber
+Blow Vacuum Tube
+House Painting
+Wild Animal Taming
+Safecracking
+_END Craft
+
+_BEGIN Own_Language
+Dutch
+Swedish
+French
+German
+Italian
+Polish
+Russian
+Arabic
+English
+Spanish
+Chinese
+Japanese
+_END Own_Language
+
+
+_BEGIN Pilot
+Submarine
+Boat
+Balloon
+Helicopter
+Plane
+Aircraft
+Zeppelin
+Heavy Machine
+MiniSub
+Parachute
+Sailboat
+_END Pilot
+
+
+_BEGIN Other_Language
+Latin
+Sanskrit
+Hieroglyphics
+Sumerian
+Afrikaans
+Albanian
+Arabic
+Armenian
+Asante
+Aymara
+Azerbaijani
+Azeri
+Bahasa
+Indonesia
+Bahasa
+Malaysia
+Baluchi
+Bangali
+Bankongo
+Baoulé
+Bashkir
+Basque
+Bembia
+Bengali
+Berber
+Bhojpuri
+Bislama
+Bokmaal
+Bubi
+Bulgarian
+Burmese
+Byelorussian
+Castilian
+Catalan
+Cebuano
+Chichewa
+Chinese
+Chishona
+Chokwe
+Chuvash
+Comoran
+Creole
+Crioulu
+Croatian
+Czech
+Danish
+Dari
+Dhivehi
+Dioula
+Dutch
+Dzongkha
+English
+Estonian
+Ewe
+Fang
+Farshi
+Fijian
+Finnish
+Flemish
+Fon
+French
+Fulani
+Gaelic
+Galician
+Geogian
+German
+Greek
+Guaraní
+Guharati
+Hausa
+Hebrew
+Hindi
+Hungarian
+Ibo
+Icelandic
+I-Kiribati
+Iloco
+Indian
+Javanese
+Jazakh
+Kabiye
+Kachin
+Karen
+Khalkh
+Mongolian
+Khmer
+Kikongo
+Kikuyu
+Kiluba
+Kimbundu
+Kinyarwanda
+Kirghiz
+Kirundi
+Kiswahili
+Klatchian
+Korean
+Krio
+Kurdish
+Lappish
+Latvian
+Letzeburgish
+Lingala
+Lithuanian
+Luganda
+Luo
+Luri
+Macedonian
+Madurese
+Magyar
+Maithir
+Malagasy
+Malay
+Maltese
+Manika
+Maori
+Marathi
+Mende
+Miskito
+Moldavian
+Mon
+Monegasque
+Mossi
+Motu
+Nauruan
+Nepali
+Nyanja
+Nynorsk
+Landsmaal
+Ovimbundu
+Persian
+Pidgin
+English
+Pilipino
+Portuguese
+Punjabi
+Pushto
+Quechua
+Quéchua
+Romanian
+Romansch
+Samoan
+Serbian
+Serer
+Sesotho
+Setswana
+Shan
+Sindebele
+Sindhi
+Sinhala
+Slovak
+Slovene
+Somali
+Soussou
+Spanish
+Sranang
+Togo
+Sudanese
+Swahili
+Swedish
+Tadzhik
+Tagalog
+Tamil
+Tartar
+Telugu
+Thai
+Tibetan
+Tonga
+Tongan
+Turkish
+Tuvaluan
+Udmurt
+Ukrainian
+Urdu
+Uzbek
+Veitnamese
+Welsh
+Wolof
+Xhosa
+Yoruba
+Zulu
+_END Other_Language
+
+
+_BEGIN Birthplace
+Annisquam, MA
+Arkham, MA
+Alesbury, MA
+Beverly, MA
+Bolton, MA
+Boston, MA
+Cambridge, MA
+Concord, MA
+Danvers, MA
+Dean's Corner, MA
+Dunwich, MA
+Essex, MA
+Falcon Point, MA
+Fitchburg, MA
+Frarmlingham, MA
+Glucester, MA
+Innsmouth, MA
+Ipswich, MA
+Kingsport, MA
+Lexinton, MA
+Lowel, MA
+Lynn, MA
+Manchester, MA
+Marblehead, MA
+Martin's Beach, MA
+Mayotteville, MA
+Newburyport, MA
+New Whitby, MA
+Peabody, MA
+Quincy, MA
+Rockport, MA
+Salem, MA
+Waltham, MA
+Worchester, MA
+_END Birthplace
+
+
+//it is recommended that this list isn't extended so it's exhaustive, as the dialog that uses it takes ages to appear!
+_BEGIN Phobias
+Acrophobia
+Agoraphobia
+Ailurophobia
+Androphobia
+Astraphobia
+Bacteriophobia
+Ballistophobia
+Belonephobia
+Botanophobia
+Claustrophobia
+Clinophobia
+Demophobia
+Dendrophobia
+Doraphobia
+Entomophobia
+Gephydropbia
+Gynephobia
+Hematopbia
+Iatrophobia
+Monophobia
+Necrophobia
+Ophiophobia
+Pediphobia
+Pyrophobia
+Scotophobia
+Thalassophobia
+Vestophobia
+Xenophobia
+Zoophobia
+_END Phobias
+
+_BEGIN CollegesDegrees
+None
+Miskatonic University, BA
+Miskatonic University, BA (Hons)
+Miskatonic University, MA
+Miskatonic University, Phd
+Miskatonic University, BSc
+Miskatonic University, BSc (Hons)
+Miskatonic University, MSc
+_END CollegesDegrees

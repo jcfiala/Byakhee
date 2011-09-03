@@ -1,0 +1,25 @@
+//Quick Dice Roller
+//
+//if we wanted to terminate the 'new' dialog, we would add a line saying "return true;"
+//at the end of the script
+
+var rollstring = prompt("Please enter the dice to roll (eg. 3D6+4)");
+var result;
+
+//keep going while there is a string to roll
+output.clear();
+while( rollstring != null && rollstring != "" )
+{
+	//roll the dice
+	result = dice.roll( rollstring );
+
+	//show the output window and write the result to it
+	output.show();
+	output.write( rollstring + " = " + result );
+
+	//prompt again
+	rollstring = prompt( rollstring + " = " + result + " ...Please enter the dice to roll");
+}
+
+//hide the output window
+output.hide();

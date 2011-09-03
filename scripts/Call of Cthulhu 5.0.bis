@@ -1,0 +1,285 @@
+/* Call of Cthulhu 5.0 investigator sheet script
+   Written by David Harvey
+*/
+
+var x, y, loop, loop2, column;
+
+//prepare the font face names
+var titlesize = 1.0; //this titlesize value is needed because Benguiat is too wide compared to Times New Roman
+var titleface = sheet.findvalidfont("Benguiat"); //the font used in the COC5 rulebook - only available with CorelDraw
+if( titleface == "" )
+{
+	titleface = "Times New Roman"; //always available - next best thing
+	titlesize = 1.2;
+}
+
+
+//set the sheet size and initial styles
+sheet.sheetsize( 188.0, 251.0 );
+sheet.setsheetparameter( sheet.showbasepercent, true ); //show a % after skill base values
+
+//era box
+sheet.setfont( titleface, 13*titlesize, sheet.fontbold );
+sheet.settextcolour( 0xFFFFFF );
+sheet.fillrectangle( 0, 0, 17.0, 30.0, 0x000000 );
+sheet.drawtext( 8.5, 2.0, field.getfieldvalue( field.era ) + "s", sheet.aligncenter );
+sheet.drawpicture( 0, 10.0, 17.0, 27.0, field.getfieldvalue( field.era ) + ".emf" );
+sheet.settextcolour( 0x000000 );
+
+//draw name box
+sheet.drawrectangle( 18.2, 0, 105.0, 30.0 );
+sheet.setfont( "Times New Roman", 10, sheet.fontbold );
+sheet.setusertextsize( 10 );
+sheet.setfieldtextstyle( sheet.usertext|sheet.textclipped|sheet.fieldunderline );
+
+sheet.drawtext( 20.2, 2.0, "Investigator Name", sheet.alignleft );
+sheet.addfield( 47.2, 1.8, 103.0, 7.0, field.name );
+
+sheet.drawtext( 20.2, 6.0, "Occupation", sheet.alignleft );
+sheet.addfield( 37.2, 5.8, 71.2, 11.0, field.occupation );
+
+sheet.drawtext( 71.2, 6.0, "Sex", sheet.alignleft );
+sheet.addfield( 77.4, 5.8, 84.2, 11.0, field.sex );
+
+sheet.drawtext( 84.2, 6.0, "Age", sheet.alignleft );
+sheet.addfield( 91.7, 5.8, 103.0, 11.0, field.age );
+
+sheet.drawtext( 20.2, 10.0, "Colleges, Degrees", sheet.alignleft );
+sheet.addfield( 47.0, 9.8, 103.0, 15.0, field.collegesDegrees );
+
+sheet.drawtext( 20.2, 14.0, "Birthplace", sheet.alignleft );
+sheet.addfield( 36.2, 13.8, 103.0, 19.0, field.birthplace );
+
+sheet.drawtext( 20.2, 18.0, "Mental Disorders", sheet.alignleft );
+sheet.addfield( 47.0, 17.8, 103.0, 23.0, field.mentalDisorders );
+sheet.addfield( 20.2, 22.8, 103.0, 28, field.insanities );
+
+
+//stats box
+drawCaptionBox( 106.2, 0.0, 188.0, 30.0, "Characteristics & Rolls" );
+sheet.setfont( "Arial", 10, sheet.fontbold );
+
+sheet.setfieldtextstyle( sheet.fieldunderline|sheet.usertext|sheet.aligncenter );
+sheet.drawtext( 108.0, 8.0,  "STR", sheet.alignleft );	sheet.addfield( 117.0, 7.8,  126.0, 13.0, field.str );
+sheet.drawtext( 108.0, 13.5, "CON", sheet.alignleft );	sheet.addfield( 117.0, 13.3, 126.0, 18.5, field.con );
+sheet.drawtext( 108.0, 19.0, "SIZ", sheet.alignleft );	sheet.addfield( 117.0, 18.8, 126.0, 24.0, field.siz );
+
+sheet.drawtext( 128.0, 8.0,  "DEX", sheet.alignleft );	sheet.addfield( 137.0, 7.8,  146.0, 13.0, field.dex );
+sheet.drawtext( 128.0, 13.5, "APP", sheet.alignleft );	sheet.addfield( 137.0, 13.3, 146.0, 18.5, field.app );
+sheet.drawtext( 128.0, 19.0, "SAN", sheet.alignleft );	sheet.addfield( 137.0, 18.8, 146.0, 24.0, field.san );
+
+sheet.drawtext( 148.0, 8.0,  "INT", sheet.alignleft );	sheet.addfield( 157.0, 7.8,  166.0, 13.0, field.int );
+sheet.drawtext( 148.0, 13.5, "POW", sheet.alignleft );	sheet.addfield( 157.0, 13.3, 166.0, 18.5, field.pow );
+sheet.drawtext( 148.0, 19.0, "EDU", sheet.alignleft );	sheet.addfield( 157.0, 18.8, 166.0, 24.0, field.edu );
+
+sheet.drawtext( 168.0, 8.0,  "Idea", sheet.alignleft );	sheet.addfield( 179.0, 7.8,  187.0, 13.0, field.idea );
+sheet.drawtext( 168.0, 13.5, "Luck", sheet.alignleft );	sheet.addfield( 179.0, 13.3, 187.0, 18.5, field.luck );
+sheet.drawtext( 168.0, 19.0, "Know", sheet.alignleft );	sheet.addfield( 179.0, 18.8, 187.0, 24.0, field.know );
+
+sheet.setfont( "Arial", 9, sheet.fontnormal );
+sheet.setusertextsize( 9 );
+sheet.drawtext( 108.0, 24.5, "99 - Cthulhu Mythos", sheet.alignleft );	sheet.addfield( 137.0, 24.3, 146.0, 29.5, field.maxsan );
+sheet.drawtext( 148.0, 24.5, "Damage Bonus", sheet.alignleft );			sheet.addfield( 172.0, 24.3, 187.0, 29.5, field.damagebonus );
+
+
+
+//sanity table
+drawCaptionBox( 18.2, 31.2, 105.0, 71.0, "Sanity Points" );
+
+//draw first entry
+sheet.setfont( "Arial", 9, sheet.fontbold );
+sheet.drawtext( 20.0, 39.0, "Insanity 0", sheet.alignleft );
+sheet.addtableentry( 19.0, 39.0, 36.0, 44.0, field.san, 0 );
+
+//draw the rest of the table
+sheet.setfont( "Arial", 9, sheet.fontnormal );
+drawtable( 22.2, 39.0, 17, 6, 4.8, 5.0, 3, 1, field.san );
+
+
+
+//magic table
+drawCaptionBox( 106.2, 31.2, 146.0, 71.0, "Magic Points" );
+
+//draw first entry
+sheet.setfont( "Arial", 9, sheet.fontbold );
+sheet.drawtext( 109.2, 40.0, "Unconscious", sheet.alignleft );
+sheet.drawtext( 129.7, 40.0, "0", sheet.alignleft );
+sheet.addtableentry( 108.2, 40.0, 133.2, 45.0, field.magic, 0 );
+
+//draw rest of table
+sheet.setfont( "Arial", 9, sheet.fontnormal );
+drawtable( 111.2, 40.0, 7, 6, 4.8, 5.0, 5, 1,  field.magic ); //rest of table
+
+																		  
+//hitpoint table
+drawCaptionBox( 147.2, 31.2, 188.0, 71.0, "Hit Points" );
+
+sheet.setfont( "Arial", 9, sheet.fontbold );
+
+//draw first entry
+sheet.drawtext( 151.0, 40.0, "Dead", sheet.alignleft );
+sheet.addtableentry( 153.0, 40.0, 111.0, 26.5, field.hitpoints, -3 ); //"dead" entry
+
+//draw first row
+drawtable( 153.0, 40.0, 7, 1, 4.8, 5.0, 2, -2, field.hitpoints ); //draw first row
+
+//draw rest of table
+sheet.setfont( "Arial", 9, sheet.fontnormal );
+drawtable( 153.0, 45.0, 7, 5, 4.8, 5.0, 0, 3,  field.hitpoints ); //draw other rows
+
+//draw unconscious caption
+sheet.setfont( "Arial", 5, sheet.fontnormal );
+sheet.drawtext( 186.8, 38.5, "UNCONSCIOUS", sheet.alignright );
+
+
+
+
+//skills box
+drawCaptionBox( 18.2, 72.2, 188.0, 194.0, "Investigator Skills" );
+sheet.setfont( "Times New Roman", 8.5, sheet.fontnormal );
+sheet.setusertextsize( 8.5 );
+
+x = 18.2;
+y = 82.0;
+loop2 = 0;
+column = 0;
+for( loop = 0; loop < (27*3); loop++ ) //27*3 = rows*columns
+{
+	//display field
+	sheet.setfieldtextstyle( sheet.alignleft|sheet.usertext|sheet.fieldunderline );
+	sheet.addfield( x,	  y, x+56.0, y+4.0, field.skill );
+	sheet.addfield( x+4.5,  y, x+7.0,  y+2.5, field.skill_check );
+	sheet.addfield( x+9.5,  y, x+33.5, y+4.0, field.skill_name );
+	sheet.setfieldtextstyle( sheet.aligncenter|sheet.usertext|sheet.fieldunderline );
+	sheet.addfield( x+41.5, y, x+52.5, y+4.0, field.skill_percent );
+
+	//update columns etc
+	loop2++;
+	if( loop2 >= 27 )
+	{
+		loop2 = 0;
+		y = 82.0;
+		x += 56.0;
+		column++;
+		if( column == 2 ) //jump over portrait
+		{
+			loop += 12;
+			y += (12*4.1); //12 skills to jump over
+		}
+	}
+	else
+		y += 4.1;
+}
+
+
+//draw portrait
+sheet.fillrectangle( 136.0, 79.0, 184.0, 127.0, 0x000000 );		//draw shadow
+sheet.fillrectangle( 133.5, 76.5, 181.5, 124.5, 0xFFFFFF );		//draw backgroud
+sheet.drawrectangle( 133.5, 76.5, 181.5, 124.5 );				//draw border
+sheet.addfield(  134.0, 77.0, 181.0, 124.0, field.portrait );	//draw actual portrait
+
+
+//draw hand to hand weapons
+drawCaptionBox( 0.0, 195.2, 71.5, 251.0, "Hand-To-Hand Weapons" );
+
+sheet.setfont( "Arial", 6, sheet.fontitalic );
+sheet.drawtext( 15.0, 203.0, "Attack or\nWeapon", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext( 31.7, 203.0, "Current\nSkill %", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext( 45.4, 203.0, "Attack\nDamage", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext( 58.5, 203.0, "Attacks\n/Round", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext( 66.0, 203.0, "Hit\nPoints", sheet.textmultiline|sheet.aligncenter );
+
+sheet.setusertextsize( 8 );
+sheet.setfont( "Times New Roman", 8, sheet.fontnormal );
+for( loop = 0; loop < 8; loop++ )
+{
+	y = 209.0+(5.0*loop);
+
+	sheet.setfieldtextstyle( sheet.alignleft|sheet.usertext|sheet.fieldunderline|sheet.textclipped );
+	sheet.addfield( 3.0,  y, 70.0, y+4.0, field.melee );
+	sheet.addfield( 3.0,  y, 5.5,  y+2.5, field.melee_check );
+	sheet.addfield( 6.0,  y, 26.5, y+4.0, field.melee_name );
+	sheet.setfieldtextstyle( sheet.aligncenter|sheet.usertext|sheet.fieldunderline|sheet.textclipped );
+	sheet.addfield( 28.0, y, 35.5, y+4.0, field.melee_percent );
+	sheet.addfield( 37.0, y, 53.8, y+4.0, field.melee_damage );
+	sheet.addfield( 55.5, y, 61.5, y+4.0, field.melee_attacks );
+	sheet.addfield( 63.0, y, 69.0, y+4.0, field.melee_hitpoints );
+}
+
+
+
+//draw firearms
+drawCaptionBox( 72.7, 195.2, 188.0, 251.0, "Firearms" );
+
+sheet.setfont( "Arial", 6, sheet.fontitalic );
+sheet.drawtext( 86.5, 203.0, "Firearm", sheet.aligncenter );
+sheet.drawtext(103.7, 203.0, "Current\nSkill %", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext(118.7, 203.0, "Attack\nDamage", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext(135.7, 203.0, "Base\nRange", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext(145.7, 203.0, "Shots Per\nRound", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext(157.7, 203.0, "Shots In\nGun", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext(168.7, 203.0, "Malfunct.\nNumber", sheet.textmultiline|sheet.aligncenter );
+sheet.drawtext(178.7, 203.0, "Hit\nPoints", sheet.textmultiline|sheet.aligncenter );
+
+for( loop = 0; loop < 9; loop++ )
+{
+	y = 209.0+(4.5*loop);
+	sheet.setfieldtextstyle( sheet.alignleft|sheet.usertext|sheet.fieldunderline|sheet.textclipped );
+	sheet.addfield( 75.5,  y, 183.7, y+3.5, field.firearm );
+	sheet.addfield( 75.5,  y, 97.0,  y+3.5, field.firearm_name );
+	sheet.setfieldtextstyle( sheet.aligncenter|sheet.usertext|sheet.fieldunderline|sheet.textclipped );
+	sheet.addfield( 98.5,  y, 107.9, y+3.5, field.firearm_percent );
+	sheet.addfield( 109.4, y, 128.9, y+3.5, field.firearm_damage );
+	sheet.addfield( 130.7, y, 142.7, y+3.5, field.firearm_range );
+	sheet.addfield( 144.2, y, 150.6, y+3.5, field.firearm_shots );
+	sheet.addfield( 151.8, y, 162.6, y+3.5, field.firearm_bullets );
+	sheet.addfield( 163.9, y, 173.2, y+3.5, field.firearm_mal );
+	sheet.addfield( 174.7, y, 183.7, y+3.5, field.firearm_hitpoints );
+}
+
+
+//draw side box
+sheet.drawrectangle( 0.0, 31.2, 17.0, 194.0 );
+sheet.drawpicture( 1.5, 120.0, 15.5, 194.0, "coc5.emf" );
+
+sheet.setfontrotated( titleface, 14.5*titlesize, sheet.fontbold, -90 );
+sheet.drawtext( 1.0, 115.0, "I n v e s t i g a t o r   S h e e t", sheet.alignleft );
+
+sheet.setfontrotated( "Times New Roman", 10, sheet.fontbold, -90 );
+sheet.drawtext( 10.0, 115.0, "Player's Name", sheet.alignleft );
+
+sheet.setusertextsizerotate( 10, -90 );
+sheet.setfieldtextstyle( sheet.alignleft|sheet.usertext|sheet.fieldunderline|sheet.textclipped );
+sheet.addfield( 9.5, 39.0, 15.0, 93.0, field.playername );
+
+
+//caption box drawing function
+function drawCaptionBox( x1, y1, x2, y2, caption )
+{
+	sheet.setfont( titleface, 10*titlesize, sheet.fontbold );
+	sheet.settextcolour( 0xFFFFFF );
+
+	sheet.drawrectangle( x1, y1, x2, y2 );
+	sheet.fillrectangle( x1, y1, x2, y1+7.0, 0x000000 );
+	sheet.drawtext( x1 + ((x2-x1)/2), y1+(1.3*(2.0-titlesize)), caption, sheet.aligncenter );
+
+	sheet.settextcolour( 0x000000 );
+}
+
+//table drawing function
+function drawtable( x, y, cols, rows, xstep, ystep, xstart, startvalue, fieldtype )
+{
+	var xloop, yloop, count = startvalue;
+
+	for( yloop = 0; yloop < rows; yloop++ )
+	{
+		for( xloop = xstart; xloop < cols; xloop++ )
+		{
+			sheet.drawtext( x+(xloop*xstep), y+(yloop*ystep), count, sheet.aligncenter );
+			sheet.addtableentry( x+(xloop*xstep)-(xstep/2), y+(yloop*ystep)-0.5, x+(xloop*xstep)+(xstep/2), y+(yloop*ystep)+ystep-0.5, fieldtype, count );
+			count++;
+		}
+
+		xstart = 0; //start at left column next time
+	}
+}

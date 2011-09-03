@@ -1,0 +1,26 @@
+/* Telegram Sheet Script
+   Written by David Harvey
+*/
+
+//get a good typewriter font
+var typewriterFace = sheet.findvalidfont("Harting");
+if( typewriterFace == "" ) typewriterFace = sheet.findvalidfont( "Hartin2" );
+if( typewriterFace == "" ) typewriterFace = sheet.findvalidfont( "Typist" );
+if( typewriterFace == "" ) typewriterFace = "Courier New";
+
+//set the sheet size and initial styles
+sheet.sheetsize( 167.0, 118.0 );
+
+//draw the telegram picture
+sheet.stretchpicture( 0, 0, 167.0, 118.0, "telegram.emf" );
+
+//draw the disclaimer text
+sheet.setfont( "Times New Roman", 8.5, sheet.fontnormal );
+sheet.settextcolour( 0xFFFFFF );
+sheet.drawtext( 25.0, 101.0, "WWT makes good-faith effort to receive, transmit, and/or deliver all communications, but can\nshare no responsibility for incomplete, inaccurate, stolen, misconstrued, missent, or missing\ncommunications, whether by negligence, mistake, conspiracy, error, war, or act of God.", sheet.alignleft|sheet.textmultiline );
+
+//add the telegram text field
+sheet.settextcolour( 0x000000 );
+sheet.setfieldtextstyle( sheet.textmultiline|sheet.aligncenter );
+sheet.setfont( typewriterFace, 14, sheet.fontnormal );
+sheet.addfield( 18.0, 33.0, 149.0, 90.0, field.text0 );

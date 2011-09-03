@@ -1,0 +1,59 @@
+//greater grimoire
+//created by David Harvey
+
+_BEGIN TITLE
+Greater Grimoire
+_END TITLE
+
+_BEGIN SPELLS
+*Summon/Bind Servitor*
+	"Summon/Bind Byakhee"
+	"Summon/Bind Dark Young"
+	"Summon/Bind Dimensional Shambler"
+	"Summon/Bind Fire Vampire"
+	"Summon/Bind Hunting Horror"
+	"Summon/Bind Nightgaunt"
+	"Summon/Bind Servitor of the Outer Gods"
+	"Summon/Bind Star Vampire"
+
+*Contact Spells*
+	"Contact Cthonian"
+	"Contact Deep Ones"
+	"Contact Elder Thing"
+	"Contact Flying Polyp"
+	"Contact Formless Spawn"
+	"Contact Ghoul"
+	"Contact Hound of Tindalos"
+	"Contact Mi-Go"
+	"Contact Sand-Dweller"
+	"Contact Star-Spawn of Cthulhu"
+
+*Call/Dismiss Deity*
+	"Call/Dismiss Azathoth"
+	"Call/Dismiss Cthugha"
+	"Call/Dismiss Hastur"
+	"Call/Dismiss Ithaqua"
+	"Call/Dismiss Nyogtha"
+	"Call/Dismiss Shub-Niggurath"
+	"Call/Dismiss Yog-Sothoth"
+
+*Contact Deity*
+	"Contact Nodens"
+	"Contact Nyarlathotep"
+	"Contact Cthulhu"
+	"Contact Tsathoggua"
+	"Contact Y'Golonac"
+
+*Other Spells*
+	"Brew Space Mead"
+	"Create Gate"
+	"Dread Curse of Azathoth"
+	"Elder Sign"
+	"Enchant Item"
+	"Powder of Ibn-Ghazi"
+	"Resurrection"
+	"Shrivelling"
+	"Voorish Sign"
+_END SPELLS
+
+//note: the author of the program can not be held responsible for any SAN loss owing to the use of these spells.
