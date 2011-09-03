@@ -1,0 +1,30 @@
+Byakhee README
+--------------
+
+Greetings, and welcome to the Byakhee Call of Cthulhu character generation program.
+
+Call of Cthulhu is the classic horror roleplaying game of Lovecraftian horror, and 
+if you're not familiar with it, I suggest having a look at http://www.chaosium.com/
+as a start, or to http://www.yog-sothoth.com/content/ for even more.  It was
+originally published some 30 years ago (in 1981) and was designed by Sandy Petersen.
+
+Byakhee's exact origins are lost in time, but I feel comfortable in saying that it 
+was created by David Harvey, who continued writing it through several revisions 
+through the 3.01 release that he made something of a decade ago, around 1999ish. 
+It's a great program for generating Call of Cthulhu characters, but over time his
+interest in it waned and it's a happy fact that before he abandoned the project, he
+made it open source with the GNU General Public License and uploaded it to 
+sourceforge at http://sourceforge.net/projects/byakhee/.  All further distribution
+of Byakhee is based off of that release, and assumes that he had the legality of
+it correct at the time.  His website is gone due to geocities having been 
+destroyed by the greater gods, but there's still a mirror of it at 
+http://www.role-play.net/tomeskeeper/byakhee.htm.
+
+Currently, John Fiala is taking the project in hand.  It's a little uncertain, 
+because he's not that familar with C++, but we'll see how things go going forward.
+The project webpage is now hosted at 
+http://www.jcfiala.net/content/byakhee-coc-character-generator, and the project's
+source code is being hosted at https://github.com/jcfiala/Byakhee, partially 
+because John is no fan of CVS, which sourceforge is stuck at.  
+
+John Fiala can be contacted thorugh his website, or at jcfiala at gmail dot com.
