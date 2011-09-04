@@ -56,7 +56,7 @@ BOOL CAboutDlg::OnInitDialog()
 	m_wndMailCImage.SetURL( "mailto:julian.smart@ukonline.co.uk" ); //FIXME: add http://web.ukonline.co.uk/Members/julian.smart ?
 	m_wndMailTips.SetURL( "mailto:christe@sti.com.br" );
 
-	m_wndAuthorWeb.SetURL( "http://www.role-play.net/tomeskeeper/byakhee.htm" );
+	m_wndAuthorWeb.SetURL( "http://www.jcfiala.net/content/byakhee-coc-character-generator" );
 	m_wndArtistWeb.SetURL( "http://www.atacomputer.com.tr/oir/gallery" );
 	m_wndChaosiumWeb.SetURL( "http://www.chaosium.com" );
 	m_wndDeltaGreenWeb.SetURL( "http://www.delta-green.com" );
