@@ -1408,7 +1408,7 @@ void CInvestigator::RollNewStats()
     m_nAPP = Dice.Roll( "3D6" );
     m_nSIZ = Dice.Roll( "2D6+6" );
     m_nINT = Dice.Roll( "2D6+6" );
-    m_nEDU = Dice.Roll( "3D6+6" );
+    m_nEDU = Dice.Roll( "3D6+3" );
 
     //make sure investigator is old enough to be this educated!
     if( m_nAge < m_nEDU + 6) m_nAge = m_nEDU + 6;
