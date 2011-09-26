@@ -41,20 +41,23 @@ class Skill:
             return ERA_ISNONE
         
     # @TODO Oh, god, get this unit tested.
+    # And what the heck is the showPercent value for?
     def GetBaseString(self, isBase01, showPercent=True):
         """Read in the base skill code from the rule file and return a base
         skill value"""
         result = ''
-        regex = '/^(^([\w+]\+?))([\*|F]*)(\%([\w _]+)\%)(\d*)$/'
+        regex = '^(?P<stat_group>\^(?P<stat>[\w+]\+?))?((\*|F)*)(?P<skill_group>\%(?P<skill>[\w _]+)\%)?(?P<num>\d*)$'
         match = re.match(regex, self.base)
         if match:
-            if match.group(1):
-                result += match.group(2)
-            if match.group(4):
-                result += match.group(5)
-            result += match.group(6)
+            if match.group('stat_group'):
+                result += match.group('stat')
+            if match.group('skill_group'):
+                result += match.group('skill')
+            result += match.group('num')
         if int(result) == 0:
             result = (isBase01 and self.base.count('*') == 0) and '01' or '00'
+        if len(result) == 1:
+            return '0' + result
         return result
         
 class FirearmSkill(Skill):
