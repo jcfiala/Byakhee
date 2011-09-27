@@ -46,15 +46,20 @@ class Skill:
         """Read in the base skill code from the rule file and return a base
         skill value"""
         result = ''
-        regex = '^(?P<stat_group>\^(?P<stat>[\w+]\+?))?((\*|F)*)(?P<skill_group>\%(?P<skill>[\w _]+)\%)?(?P<num>\d*)$'
+        regex = '^(?P<skill_group>\%(?P<skill>[\w _]+)\%)?(?P<stat_group>\^(?P<stat>[A-Z]+))?((\*|F)*)(?P<num>\d*)$'
         match = re.match(regex, self.base)
         if match:
-            if match.group('stat_group'):
-                result += match.group('stat')
             if match.group('skill_group'):
                 result += match.group('skill')
-            result += match.group('num')
-        if int(result) == 0:
+            if match.group('stat_group') and len(result):
+                result += '+' + match.group('stat')
+            elif match.group('stat_group'):
+                result += match.group('stat')
+            if len(result) and len(match.group('num')):
+                result += 'x' + match.group('num')
+            elif match.group('num'):
+                result += match.group('num')
+        if result == '0' or result == '00':
             result = (isBase01 and self.base.count('*') == 0) and '01' or '00'
         if len(result) == 1:
             return '0' + result
@@ -64,7 +69,7 @@ class FirearmSkill(Skill):
     def __init__(self, name='', base='', era_mask=ERA_ISNONE, dmg='', range='', shots='', bullets='', HP='', MAL=''):
         Skill.__init__(self, name, base, era_mask)
         if (era_mask):
-            skill.type = FIREARM
+            self.type = FIREARM
         self.dmg = dmg
         self.range = range
         self.shots = shots
