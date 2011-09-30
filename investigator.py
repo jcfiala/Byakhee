@@ -130,7 +130,7 @@ class Investigator:
         pass
     
     # Skill Management
-    def AddSkill(self, skill, occupational = FALSE):
+    def AddSkill(self, skill, occupational = False):
         pass
     
     def SetOccupation(self, occupation_name):
