@@ -6,7 +6,7 @@ ERA_ISNONE = 0
 ERA_IS1890 = 1
 ERA_IS1920 = 2
 ERA_IS1990 = 4
-ERA_ISALL = 7
+ERA_ISALL = 63
 
 NO_TYPE = 1
 SKILL = 2
@@ -81,7 +81,7 @@ class MeleeSkill(Skill):
     def __init__(self, name='', base='', era_mask=ERA_ISNONE, dmg='', attacks='', HP=''):
         Skill.__init__(self, name, base, era_mask)
         if (era_mask):
-            skill.type = MELEE
+            self.type = MELEE
         self.dmg = dmg
         self.attacks = attacks
         self.HP = HP
@@ -90,7 +90,7 @@ class SpecialSkill(Skill):
     def __init__(self, name, base, era_mask=ERA_ISNONE, SubSkills = 0, CreateSubSkills = True):
         Skill.__init__(self, name, base, era_mask)
         if (era_mask):
-            skill.type = SPECIALSKILL
+            self.type = SPECIALSKILL
         self.skills = SubSkills
         self.subskills = []
         self.manage_sub_skills = CreateSubSkills
@@ -108,10 +108,16 @@ class SpecialSkill(Skill):
         return self.subskills.index(subskill)
         
 class SubSkill(Skill):
-    def __init__(self, special_skill, base, era_mask):
+    def __init__(self, special_skill, base = None, era_mask = None):
         self.skill = special_skill
-        self.base = base
-        self.EraMask = era_mask
+        if (base):
+            self.base = base
+        else:
+            self.base = special_skill.base
+        if (era_mask):
+            self.EraMask = era_mask
+        else:
+            self.EraMask = special_skill.EraMask
         self.name = ''
         self.type = SUBSKILL
         

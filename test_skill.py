@@ -87,3 +87,34 @@ class TestSkillCase():
         assert skill_.HP == '12'
         assert skill_.MAL == '00'
         
+    def test_create_melee_skill(self):
+        skill_ = skill.MeleeSkill('Club', '15', skill.ERA_ISALL, '1D6+db', '1', '6')
+        assert skill_.name == 'Club'
+        assert skill_.base == '15'
+        assert skill_.EraMask == skill.ERA_ISALL
+        assert skill_.type == skill.MELEE
+        assert skill_.dmg == '1D6+db'
+        assert skill_.attacks == '1'
+        assert skill_.HP == '6'
+
+    def test_create_special_skill(self):
+        skill_ = skill.SpecialSkill('Art', '5', skill.ERA_ISALL, 2)
+        assert skill_.name == 'Art'
+        assert skill_.base == '5'
+        assert skill_.type == skill.SPECIALSKILL
+        assert skill_.EraMask == skill.ERA_ISALL
+        assert skill_.skills == 2
+        assert len(skill_.subskills) == 2
+        
+    def test_create_subskill(self):
+        art_skill = skill.SpecialSkill('Art', '5', skill.ERA_ISALL, 2)
+        sub1_skill = skill.SubSkill(art_skill)
+        sub1_skill.name = 'Sculpture'
+        art_skill.subskills[0] = sub1_skill
+        assert art_skill.subskills[0].name == 'Sculpture'
+        assert art_skill.GetSubSkillIndex(sub1_skill) == 0
+        assert sub1_skill.type == skill.SUBSKILL
+        assert sub1_skill.base == '5'
+        assert sub1_skill.EraMask == skill.ERA_ISALL
+        
+        
