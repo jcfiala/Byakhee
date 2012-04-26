@@ -36,7 +36,7 @@ static char THIS_FILE[] = __FILE__;
 /////////////////////////////////////////////////////////////////////////////
 // CScriptSheetView
 
-IMPLEMENT_DYNCREATE(CScriptSheetView, CZoomView)
+IMPLEMENT_DYNCREATE(CScriptSheetView, CScrollView)
 
 CScriptSheetView::CScriptSheetView()
 {
@@ -45,8 +45,8 @@ CScriptSheetView::CScriptSheetView()
     m_Fields.AddRef();
 
     //set inital sheet size
-    m_layout = CSize(10000,10000);
-    SetScrollSizes( MM_HIMETRIC, m_layout );
+    m_SheetSize = CSize(10000,10000);
+    SetScrollSizes( MM_HIMETRIC, m_SheetSize );
 
     //set active field index
     m_nFieldID = -1;
@@ -81,7 +81,7 @@ CScriptSheetView::~CScriptSheetView()
 }
 
 
-BEGIN_MESSAGE_MAP(CScriptSheetView, CZoomView)
+BEGIN_MESSAGE_MAP(CScriptSheetView, CScrollView)
 	//{{AFX_MSG_MAP(CScriptSheetView)
 	ON_COMMAND(ID_VIEW_REFRESH_SHEET, OnViewRefreshSheet)
 	ON_WM_ERASEBKGND()
@@ -116,7 +116,7 @@ void CScriptSheetView::OnDraw(CDC* pDC)
         //create a device to draw the background into
         CDC DCSheet;
         DCSheet.CreateCompatibleDC(pDC);
-        //DCSheet.SetMapMode(MM_HIMETRIC);
+        DCSheet.SetMapMode(MM_HIMETRIC);
         CBitmap* pOldBitmap = NULL;
 
         //see if we need to draw the sheet again
@@ -125,7 +125,7 @@ void CScriptSheetView::OnDraw(CDC* pDC)
             CWaitCursor Wait;
 
             //create a bitmap to store the background
-            CSize dsz( m_layout.cx, -m_layout.cy );
+            CSize dsz( m_SheetSize.cx, -m_SheetSize.cy );
             DCSheet.LPtoDP( &dsz );
 
             m_pbmSheet = new CBitmap();
@@ -133,7 +133,7 @@ void CScriptSheetView::OnDraw(CDC* pDC)
             pOldBitmap = DCSheet.SelectObject( m_pbmSheet );
 
             //prepare sheet drawing
-            CSheetDrawInfo DrawInfo( this, &DCSheet, m_layout );
+            CSheetDrawInfo DrawInfo( this, &DCSheet, m_SheetSize );
             DrawInfo.m_nShadowOffset = GetSheetParameter(SHEETPARAM_SHADOWOFFSET, 0);
 
             //execute all drawing commands
@@ -144,7 +144,7 @@ void CScriptSheetView::OnDraw(CDC* pDC)
             pOldBitmap = DCSheet.SelectObject( m_pbmSheet );
 
         //copy the background to the display
-        pDC->BitBlt( 0, 0, m_layout.cx, -m_layout.cy, &DCSheet, 0, 0, SRCCOPY );
+        pDC->BitBlt( 0, 0, m_SheetSize.cx, -m_SheetSize.cy, &DCSheet, 0, 0, SRCCOPY );
 
         //remove the bitmap from the device
         DCSheet.SelectObject( pOldBitmap );
@@ -154,7 +154,7 @@ void CScriptSheetView::OnDraw(CDC* pDC)
         //draw directly to device when it's printing
 
         //prepare sheet drawing
-        CSheetDrawInfo DrawInfo( this, pDC, m_layout );
+        CSheetDrawInfo DrawInfo( this, pDC, m_SheetSize );
         DrawInfo.m_nShadowOffset = GetSheetParameter(SHEETPARAM_SHADOWOFFSET, 0);
 
         //execute all drawing commands
@@ -169,12 +169,12 @@ void CScriptSheetView::OnDraw(CDC* pDC)
 #ifdef _DEBUG
 void CScriptSheetView::AssertValid() const
 {
-	CZoomView::AssertValid();
+	CScrollView::AssertValid();
 }
 
 void CScriptSheetView::Dump(CDumpContext& dc) const
 {
-	CZoomView::Dump(dc);
+	CScrollView::Dump(dc);
 }
 #endif //_DEBUG
 
@@ -199,7 +199,7 @@ void CScriptSheetView::OnActivateView(BOOL bActivate, CScrollView* pActivateView
 
 void CScriptSheetView::OnSetFocus(CWnd* pOldWnd) 
 {
-	CZoomView::OnSetFocus(pOldWnd);
+	CScrollView::OnSetFocus(pOldWnd);
     AddAllSheetTypes();
 }
 
@@ -231,14 +231,14 @@ void CScriptSheetView::OnInitialUpdate()
     AddAllFields();
 
     //initialise the sheet manager
-    m_layout = CSize(10000,10000);
+    m_SheetSize = CSize(10000,10000);
     SetSheet(m_strSheet);
 
     //initialise the combo box
     AddAllSheetTypes();
 
     //now do OnUpdate()...
-	CZoomView::OnInitialUpdate();
+	CScrollView::OnInitialUpdate();
 }
 
 void CScriptSheetView::OnViewRefreshSheet() 
@@ -247,7 +247,7 @@ void CScriptSheetView::OnViewRefreshSheet()
     AddAllSheetTypes();
 
     //reload the sheet and reuse it
-    m_layout = CSize(10000,10000);
+    m_SheetSize = CSize(10000,10000);
     ReloadSheet();
     RedrawWindow();
 }
@@ -364,7 +364,7 @@ void CScriptSheetView::AddDummySheetCommands( const char* pszMessage /*NULL*/ )
     if( pszMessage == NULL ) pszMessage = "An error occurred while trying to process the sheet script";
     
     CRect rc( ScaleToSheet(3), -ScaleToSheet(2), ScaleToSheet(100.0), -ScaleToSheet(25.0) );
-    m_layout = CSize( rc.right, -rc.bottom );
+    m_SheetSize = CSize( rc.right, -rc.bottom );
 
     m_Fields.m_SheetCommands.Add( new CDrawSheetCommand( CommandType_SetTextColour, RGB(0,0,0) ) );
     m_Fields.m_SheetCommands.Add( new CFontSheetCommand( CommandType_SetFont, "Arial", 160, FONTSTYLE_ITALIC|FONTSTYLE_BOLD ) );
@@ -381,7 +381,7 @@ BOOL CScriptSheetView::ReloadSheet()
     //stop editing
     m_wndFieldEdit.EndEditing();
 
-    m_layout = CSize(10000,10000);
+    m_SheetSize = CSize(10000,10000);
     if( m_pbmSheet ) delete m_pbmSheet;
     m_pbmSheet = NULL;
 
@@ -417,7 +417,7 @@ BOOL CScriptSheetView::ReloadSheet()
         AddDummySheetCommands( "There are no sheet files available (*." + m_strSheetFileExtension + CString(")") );
 
     //adjust the size of the view
-    SetScrollSizes( MM_HIMETRIC, m_layout );
+    SetScrollSizes( MM_HIMETRIC, m_SheetSize );
 
     //let subclass tweak it's custom field commands
     InitialiseSheetCommands();
@@ -431,8 +431,8 @@ BOOL CScriptSheetView::ReloadSheet()
 void CScriptSheetView::WindowToSheet( CPoint& point )
 {
 	CWindowDC dc(NULL);
-	//dc.SetMapMode(MM_HIMETRIC);
-	DPtoLP( &point );
+	dc.SetMapMode(MM_HIMETRIC);
+	dc.DPtoLP( &point );
 
     CPoint ptScroll = GetScrollPosition();
     point.x += ptScroll.x;
@@ -447,15 +447,15 @@ void CScriptSheetView::SheetToWindow( CPoint& point )
     point.y -= ptScroll.y;
 
     CWindowDC dc(NULL);
-	//dc.SetMapMode(MM_HIMETRIC);
-	LPtoDP( &point );
+	dc.SetMapMode(MM_HIMETRIC);
+	dc.LPtoDP( &point );
 }
 
 void CScriptSheetView::WindowToSheet( CRect& rect )
 {
 	CWindowDC dc(NULL);
-	//dc.SetMapMode(MM_HIMETRIC);
-	DPtoLP( &rect );
+	dc.SetMapMode(MM_HIMETRIC);
+	dc.DPtoLP( &rect );
 
     CPoint ptScroll = GetScrollPosition();
     rect.left += ptScroll.x;
@@ -473,8 +473,8 @@ void CScriptSheetView::SheetToWindow( CRect& rect )
     rect.bottom -= ptScroll.y;
 
     CWindowDC dc(NULL);
-	//dc.SetMapMode(MM_HIMETRIC);
-	LPtoDP( &rect );
+	dc.SetMapMode(MM_HIMETRIC);
+	dc.LPtoDP( &rect );
 }
 
 void CScriptSheetView::OnPrint(CDC* pDC, CPrintInfo* pInfo) 
@@ -488,14 +488,14 @@ void CScriptSheetView::OnPrint(CDC* pDC, CPrintInfo* pInfo)
     pDC->SetViewportOrg( nMarginLeft, nMarginTop );
 
     //continue printing
-	CZoomView::OnPrint(pDC, pInfo);
+	CScrollView::OnPrint(pDC, pInfo);
 }
 
 void CScriptSheetView::OnLButtonDown(UINT nFlags, CPoint point) 
 {
     SetCapture();
     m_fLeftButtonClick = TRUE;
-	CZoomView::OnLButtonDown(nFlags, point);
+	CScrollView::OnLButtonDown(nFlags, point);
 }
 
 void CScriptSheetView::OnLButtonUp(UINT nFlags, CPoint point) 
@@ -520,7 +520,7 @@ void CScriptSheetView::OnLButtonUp(UINT nFlags, CPoint point)
         }
     }
 
-	CZoomView::OnLButtonUp(nFlags, point);
+	CScrollView::OnLButtonUp(nFlags, point);
 }
 
 long CScriptSheetView::OnAppSettingsChange(WPARAM,LPARAM)
@@ -545,7 +545,7 @@ void CScriptSheetView::OnMouseMove(UINT nFlags, CPoint point)
             ::SetCursor( AfxGetApp()->LoadStandardCursor(IDC_ARROW) );
     }
 
-    CZoomView::OnMouseMove(nFlags, point);
+    CScrollView::OnMouseMove(nFlags, point);
 }
 
 void CScriptSheetView::ResetFieldList()
@@ -656,10 +656,10 @@ CScriptObject::MEMBERRESULT CScriptSheetView::ExecuteMemberFunction( char* pszNa
                 {
                     //non-command functions
                     case CommandType_SheetSize:             
-                        m_layout.cx = rc.left; 
-                        m_layout.cy = -rc.top; 
-                        if( m_layout.cx <= 0 ) m_layout.cx = 100;
-                        if( m_layout.cy <= 0 ) m_layout.cy = 100;
+                        m_SheetSize.cx = rc.left; 
+                        m_SheetSize.cy = -rc.top; 
+                        if( m_SheetSize.cx <= 0 ) m_SheetSize.cx = 100;
+                        if( m_SheetSize.cy <= 0 ) m_SheetSize.cy = 100;
                         break;
 
                     //drawing commands
@@ -917,7 +917,7 @@ BOOL CScriptSheetView::OnSetCursor(CWnd* pWnd, UINT nHitTest, UINT message)
     if( nHitTest == HTCLIENT && (pWnd == this || pWnd == NULL ) ) 
         return TRUE; //cursor changing is done in mouse move in the client area
     else
-	    return CZoomView::OnSetCursor(pWnd, nHitTest, message);
+	    return CScrollView::OnSetCursor(pWnd, nHitTest, message);
 }
 
 void CScriptSheetView::OnUpdateEditUndo(CCmdUI* pCmdUI) 
@@ -1003,13 +1003,13 @@ int CScriptSheetView::GetSheetParameter(int nCode, int nDefaultValue)
 void CScriptSheetView::OnVScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
 {
 	m_wndFieldEdit.EndEditing();
-	CZoomView::OnVScroll(nSBCode, nPos, pScrollBar);
+	CScrollView::OnVScroll(nSBCode, nPos, pScrollBar);
 }
 
 void CScriptSheetView::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar) 
 {
 	m_wndFieldEdit.EndEditing();
-	CZoomView::OnHScroll(nSBCode, nPos, pScrollBar);
+	CScrollView::OnHScroll(nSBCode, nPos, pScrollBar);
 }
 
 void CScriptSheetView::OnEditNextField() 
