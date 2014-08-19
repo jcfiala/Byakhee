@@ -1592,14 +1592,6 @@
 			RelativePath="Wizard_NewInvestigatorPages.h"
 			>
 		</File>
-		<File
-			RelativePath=".\ZoomView.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\ZoomView.h"
-			>
-		</File>
 	</Files>
 	<Globals>
 		<Global

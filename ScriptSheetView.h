@@ -12,7 +12,6 @@
 #include "ScriptEngine/ScriptObject.h"
 #include "FieldEdit.h"
 #include "Field.h"
-#include "ZoomView.h"
 
 #define SHEETPARAM_SHADOWOFFSET 1
 
@@ -36,7 +35,7 @@
  *  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-class CScriptSheetView : public CZoomView, public CScriptObject, public CFieldManager
+class CScriptSheetView : public CScrollView, public CScriptObject, public CFieldManager
 {
 protected:
 	CScriptSheetView();           // protected constructor used by dynamic creation
@@ -109,7 +108,7 @@ protected:
     void WindowToSheet( CRect& rect );
     void SheetToWindow( CRect& rect );
 
-	//CSize m_SheetSize;
+	CSize m_SheetSize;
     CString m_strSheet;
 
     virtual void SheetChanged() {};
