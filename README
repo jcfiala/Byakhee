@@ -17,14 +17,15 @@ made it open source with the GNU General Public License and uploaded it to
 sourceforge at http://sourceforge.net/projects/byakhee/.  All further distribution
 of Byakhee is based off of that release, and assumes that he had the legality of
 it correct at the time.  His website is gone due to geocities having been 
-destroyed by the greater gods, but there's still a mirror of it at 
-http://www.role-play.net/tomeskeeper/byakhee.htm.
+destroyed by the greater gods, but I seem to have preserved the additional files 
+from that project on my webiste.
 
 Currently, John Fiala is taking the project in hand.  It's a little uncertain, 
-because he's not that familar with C++, but we'll see how things go going forward.
-The project webpage is now hosted at 
+because he's not that familiar with C++, but we'll see how things go going forward.
+The project web-page is now hosted at 
 http://www.jcfiala.net/content/byakhee-coc-character-generator, and the project's
-source code is being hosted at https://github.com/jcfiala/Byakhee, partially 
-because John is no fan of CVS, which sourceforge is stuck at.  
+source code is now being hosted at https://github.com/jcfiala/Byakhee.
 
-John Fiala can be contacted thorugh his website, or at jcfiala at gmail dot com.
+The current plan is to try and update a rules file to handle the new 7th edition.
+
+John Fiala can be contacted through his website, or at jcfiala at gmail dot com.
