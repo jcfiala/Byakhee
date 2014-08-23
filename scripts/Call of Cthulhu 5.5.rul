@@ -1,0 +1,368 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+// This file contains the data tables required by the program. Each section is bounded
+// by a _BEGIN [name] and an _END [name]. Comments start with a // inside each section
+// and any text outside the sections is ignored.
+// It shouldn't be too hard to add or change anything, but make sure you take a back-up
+// - the parser for this file has hardly been tested at all!
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+_BEGIN CREDIT
+Call of Cthulhu version 5.5
+
+Rule File By David Harvey
+_END CREDIT
+
+
+_BEGIN ERAS
+Cthulhu 5.5 (1890s)
+Cthulhu 5.5 (1920s)
+Cthulhu 5.5 (1990s)
+_END ERAS
+
+
+_BEGIN KEYVALUEPAIRS
+"DefaultScript" "Call of Cthulhu 5.5"
+"ShortInfo" "using the Call of Cthulhu v5.5 rulebook"
+_END KEYVALUEPAIRS
+
+
+_BEGIN SKILLS
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//A * in the name will be removed when it's displayed, but it will be sorted before skills
+//without one.
+//A * at the start of a skill base means it can't be modified. A ^ means it will use the current
+//investigator's statistic for the base, multiplied by the number immediately after it. 
+//An F before
+//the skill causes it to appear in the "Firearms" section of the skill list, rather than with the skills
+//The 'extra' column usually contains 0. If it contains more, the skill will have that many subsets, such
+//as art: painting or other language: latin etc.
+//The era code represents which eras the skill exists in: an  x means it will, a - means it won't
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//base    extra name                    eras [1890 1920 1990]: - = no, x = yes
+    "10"    0	"*Accounting"           xxx
+    "0"     0	"*Anthropology"         xxx
+    "0"     0	"*Archaeology"          xxx
+    "5"     2	"*Art"                  xxx
+    "0"     0	"*Astronomy"            xxx
+    "5"     0	"*Bargain"              xxx
+    "0"     0	"*Biology"              xxx
+    "0"     0	"*Chemistry"            xxx
+    "40"	0	"*Climb"                xxx
+	"0"     0	"*Computer Use"         --x
+    "15"    0	"*Conceal"              xxx
+    "0"     2   "*Craft"				xxx
+    "15"    0	"*Credit Rating"        xxx
+    "*0"    0	"*Cthulhu Mythos"       xxx
+    "0"     0   "*Disguise"             xxx
+    "^DEX2" 0	"*Dodge"                xxx
+	"20"    0	"*Drive Auto"           -xx
+    "20"    0	"*Drive Carriage"       x--
+    "10"    0	"*Electrical Repair"    xxx
+	"0"     0	"*Electronics"          --x
+    "5"     0	"*Fast Talk"            xxx
+    "30"    0	"*First Aid"            xxx
+    "0"     0	"*Geology"              xxx
+    "10"    0	"*Hide"                 xxx
+    "20"    0	"*History"              xxx
+    "25"    0	"*Jump"                 xxx
+    "5"     0	"*Law"                  xxx
+    "25"    0	"*Library Use"          xxx
+    "25"    0	"*Listen"               xxx
+    "0"     0	"*Locksmith"            xxx
+    "0"     0	"*Martial Arts"         xxx
+    "20"    0	"*Mechanical Repair"    xxx
+    "5"     0	"*Medicine"             xxx
+    "10"    0	"*Natural History"      xxx
+    "10"    0	"*Navigate"             xxx
+    "5"     0	"*Occult"               xxx
+    "0"     0	"*Operate Hvy. Machine" xxx
+    "0"     3	"*Other Language"       xxx
+    "^EDU5" 1	"*Own Language"         xxx
+    "15"    0	"*Persuade"             xxx
+    "0"     0	"*Pharmacy"             xxx
+    "10"    0	"*Photography"          xxx
+    "0"     0	"*Physics"              xxx
+	"0"     3	"*Pilot"                -xx
+    "0"     0	"*Pilot Balloon"        x--
+    "0"     0	"*Pilot Boat"           x--
+	"0"     0	"*Psychoanalysis"       -xx
+    "5"     0	"*Psychology"           xxx
+    "5"     0	"*Ride"                 xxx
+    "10"    0	"*Sneak"                xxx
+    "25"    0	"*Spot Hidden"          xxx
+    "25"    0	"*Swim"                 xxx
+    "25"    0	"*Throw"                xxx
+    "10"    0	"*Track"                xxx
+// and the firearms
+    "F20"	0   "*Handgun"              xxx
+    "F15"	0   "*Machine Gun"          xxx
+    "F25"	0   "*Rifle"                xxx
+    "F30"   0   "*Shotgun"              xxx
+	"F15"   0   "*Submachine Gun"       -xx
+_END SKILLS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_BEGIN FIREARMS
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//as with the skills, a ^ means it uses the given core stat. In addition, a %skill name% means it will use
+//that skill as the base. Using ^ and %% will result in them being added (usually - as I say, the parser 
+//hasn't been fully tested!)
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //skill			Dmg					Range			Sht/Rnd	Bul In Gun		HP		Mal		Name						era
+//name end * = impale
+//HANDGUNS
+	"%handgun%"			"1D6+1"			"10 yds"		"1/4"	    "1"			"8"		"95"	"Flintlock Pistol*"			xxx
+	"%handgun%"			"1D6"			"10 yds"		"3"		    "6"			"6"		"00"	".22 Short Automatic*"		-xx
+	"%handgun%"			"1D6"			"3 yds"		    "1"		    "1"			"5"		"00"	".25 Derringer*"		    xx-
+
+	"%handgun%"			"1D8"			"15 yds"		"3"		    "6"			"10"	"00"	".32 Revolver*"				xxx
+	"%handgun%"			"1D8"			"15 yds"		"3"		    "6"			"8"		"99"	".32 Automatic*"			-xx
+	"%handgun%"			"1D8+1D4"		"20 yds"		"1"		    "6"			"11"	"00"	".357 Magnum*"		        --x
+	
+	"%handgun%"			"1D10"			"15 yds"		"2"		    "6"			"10"	"00"	".38 Revolver*"				xxx
+	"%handgun%"			"1D10"			"15 yds"		"2"		    "6"			"8"		"99"	".38 Automatic*"			-xx
+	"%handgun%"			"1D10"			"20 yds"		"3"		    "17"		"8"		"99"	"9mm Automatic*"			--x
+	
+	"%handgun%"			"1D10"			"20 yds"		"2"		    "8"			"9"		"99"	"Model P08 Luger*"			-xx
+	"%handgun%"			"1D10"			"15 yds"		"1"		    "6"			"10"	"00"	".41 Revolver*"				x--
+	"15"			"2D6+2"			"30 yds"		"1"		    "6"			"12"	"00"	".44 Magnum*"		        --x
+
+	"%handgun%"			"1D10+2"		"15 yds"		"1"		    "6"			"10"	"00"	".45 Revolver*"				xxx
+	"%handgun%"			"1D10+2"		"15 yds"		"1"		    "7"			"8"		"00"	".45 Automatic*"			-xx
+
+//RIFLES    
+    "%rifle%"            "1D10+4"        "60 yds"        "1/4"	    "1"         "12"    "95"    ".58 Springfield Musket*"   xxx
+    "%rifle%"            "1D6+2"         "30 yds"        "1"		    "6"         "9"     "99"    ".22 Bolt-Action Rifle*"    xxx
+    "%rifle%"            "2D6"           "50 yds"        "1"			"6"         "8"     "98"    ".30 Level-Action Carbine*" xxx
+    
+    "%rifle%"            "1D8+1D6+3"     "80 yds"        "1/3"		"1"			"12"	"00"	".45 Martini-Henry Rifle*"	x--
+	"15"			"2D6+1"			"20 yds"		"1/3"		"1"			"7"		"88"	"Moran's Air Rifle*"		x--
+	"%rifle%"			"2D6+2"			"110 yds"		"1/2"	    "8"			"11"	"00"	"Garand M1, M2 Rifle*"		--x
+	
+	"%rifle%"			"2D6+1"			"90 yds"		"2"			"10"		"10"	"97"	"SKS Carbine*"				--x
+	"%rifle%"			"2D6+4"			"110 yds"		"1/2"	    "10"		"12"	"00"	".303 Lee-Enfield*"			xxx
+	"%rifle%"			"2D6+4"			"110 yds"		"1/2"	    "5"			"12"	"00"	".30-06 Bolt-Action Rifle*"	xxx
+
+	"%rifle%"			"1D8+1D6+4"		"90 yds"		"1"			"5"			"12"	"98"	".444 Marlin Rifle*"		--x
+	"15"			"3D6+4"			"100 yds"		"1 or 2"    "2"			"12"	"00"	"Elephant Gun (2B)*"		xx-
+
+//SHOTGUNS
+	"%shotgun%"			"2D6/1D6/1D3"	"10/20/50"	    "1 / 2"	    "2"			"12"	"00"	"20-gauge Shotgun (2B)"		xx-
+	"%shotgun%"			"2D6+2/1D6+1/1D4"	"10/20/50"	    "1 / 2"	    "2"			"12"	"00"	"16-gauge Shotgun (2B)"		xx-
+
+	"%shotgun%"			"4D6/2D6/1D6"	"10/20/50"	    "1 / 2"	    "2"			"12"	"00"	"12-gauge Shotgun (2B)"		xx-
+	"%shotgun%"			"4D6/2D6/1D6"	"10/20/50"	    "1"			"5"			"10"	"00"	"12-gauge Shotgun (pump)"	-xx
+
+	"%shotgun%"			"4D6/2D6/1D6"	"10/20/50"	    "2"			"5"			"10"	"00"	"12-gauge Shotgun (semi)"	--x
+	"%shotgun%"			"4D6/1D6"		"5/10 yds"		"1 / 2"     "2"			"14"	"00"	"12-gauge sawn off (2B)"    -x-
+	"%shotgun%"			"4D6+2/2D6+1/1D6"	"10/20/50"	    "1 / 2"     "2"			"12"	"00"	"10-gauge Shotgun (2B)"		x--
+
+//ASSAULT RIFLES
+	"%rifle%"			"2D6+1"			"90 yds"	    "2 / burst" "30"		"12"	"00"	"AK-47"						--x
+	"%rifle%"			"2D6+1"			"90 yds"	    "2 / burst" "30"		"12"	"00"	"AKM"						--x
+	"%rifle%"			"2D8"			"120 yds"	    "2 / burst" "30"		"12"	"97"	"AK-74"						--x
+	"%rifle%"			"2D10+4"		"210 yds"		"1"		    "11"		"12"	"96"	"Barrett Model 82"			--x
+	
+	"%rifle%"			"2D6+3"			"100 yds"	    "1 / burst" "20"		"11"	"97"	"FN FAL"					--x
+	"%rifle%"			"2D6+3"			"110 yds"	    "1 / burst" "20"		"12"	"98"	"Galil AR"					--x
+	"%rifle%"			"2D8"			"130 yds"	    "1/burst 3"	"30"		"11"	"97"	"M16A2"						--x
+
+//SUBMACHINE GUNS
+	"%Submachine Gun%"			"1D10+2"		"20 yds"	    "1 / burst" "20/33"		"8"		"96"	"Thomson"					-x-
+	"%Submachine Gun%"			"1D10"			"45 yds"	    "2 / burst" "15/30"		"10"	"97"	"Hechler & Kock MP5"		--x
+	"%Submachine Gun%"			"1D8"			"20 yds"	    "3 / burst" "32"		"6"		"96"	"Ingram MAC-11"				--x
+	
+	"%Submachine Gun%"			"1D8"			"20 yds"	    "3 / burst" "20"		"6"		"96"	"Skorpion SMG"				--x
+	"%Submachine Gun%"			"1D10"			"40 yds"	    "2 / burst" "32"		"8"		"98"	"Uzi SMG"					--x
+
+//MACHINE GUNS
+	"%Machine Gun%"			"2D6+4"			"100 yds"		"burst"		"200"		"20"	"96"	"Model 1882 Gatling"	    x--
+	"%Machine Gun%"			"2D6+4"			"90 yds"	    "1/2 / burst" "20"		"11"	"00"	"Browning Aut. Rifle"	    -x-
+	"%Machine Gun%"			"2D6+3"			"150 yds"		"burst"		"250"		"12"	"96"	".30 Browning belt-fed"	    -x-
+	"%Machine Gun%"			"2D6+4"			"200 yds"		"burst"		"300"		"18"	"00"	"Maschinegewehr belt-fed"   -x-
+	"%Machine Gun%"			"2D8"			"130 yds"		"burst"		"30/200"	"11"	"99"	"FN Minimi, clip/belt"	    --x
+
+//EXPLOSIVES ETC.
+	"%Throw%"		"2D6+luck"	    "thrown"		"1/2"	    "1 only"	"1"		"95"	"Molotov Cocktail"			-xx
+	"25"			"1D10+1D3 burn"	"10"			"1/2"		"1"			"11"	"00"	"Signal Pistol"	xxx
+	"25"			"3D6/2yds"		"20"			"1/3"		"1"			"12"	"99"	"M79 Grenade Launcher"	    --x
+	
+	"%Throw%"		"5D6/2yds"		"thrown"		"1/2"		"1 only"	"1"		"99"	"Dynamite Stick"			xxx
+"%Electrical Repair%"	"D6/3yds"	"in place"		"one use"	"1 only"	"3"		"95"	"Pipe Bomb"					xxx
+"%Electrical Repair%"	"6D6/3yds"	"in place"		"one use"	"1 only"	"15"	"99"	"Plastique (C-4), 1lb."		--x
+
+	"%Throw%"		"4D6/4yds"		"thrown"		"1/2"		"1 only"	"8"		"99"	"Hand Grenade"				-xx
+	"00"			"6D6/6yds"		"500 yds"		"2"			"separate"	"10"	"00"	"81mm Mortar"				--x
+	"00"			"10D6/2yds"		"500 yds"		"1/4"		"separate"	"40"	"99"	"75mm Field Gun"			-xx
+
+	"%Hide%^LUCK"	"4D6/5yds"		"in place"		"in place"	"one use"	"9"		"99"	"AP Mine"					-xx
+	"^LUCK"	        "6D6+6/3D6+2/1D6"	"10/25/50"	    "in place"	"one use"	"12"	"99"	"Claymore Mine"				--x
+	"05"			"2D6+shock"		"25 yds"		"1"		    "min 10"    "6"		"93"	"Flamethrower"				--x
+
+_END FIREARMS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_BEGIN MELEE
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//must have at least one * in front of fist/puch etc to make it appear in normal skill listings rather
+//than in weapons listing. The other *s keep them in order when the skills are sorted alphabetically. 
+//Otherwise, the syntax for everything is the same. The * after the skill indicates it can impale and is
+//not parsed at all
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //skill					Dmg				Atks	HP		Name							era
+    "50"					"1D3+db"		"1"		"-"		"****Fist/Punch"				xxx
+    "10"					"1D4+db"		"1"		"-"		"***Head Butt"					xxx
+    "25"					"1D6+db"		"1"		"-"		"**Kick"						xxx
+    "25"					"special"		"1"		"-"		"*Grapple"						xxx
+	"20"					"1D6+1+db"		"1"		"10"	"Fencing Foil*"					xxx
+	"20"					"1D6+db"		"1"		"10"	"Sword Cane*"					xxx
+	"10"					"1D6+1+db"		"1"		"15"	"Rapier*"						xxx
+	"10"					"1D6+1+db"		"1"		"15"	"Heavy Epee*"					xxx
+	"15"					"1D8+1+db"		"1"		"20"	"Cavalier Sabre"				xxx
+	"10"					"1D8+1+D6"		"1"		"15"	"Cavalry Lance*"	            xxx
+	"20"					"1D8+2+db"		"1"		"15"	"Wood Axe"						xxx
+	"20"					"1D6+1+db"		"1"		"12"	"Hatchet"						xxx
+	"20"					"1D6+1+db"		"1"		"12"	"Sickle"						xxx
+	"25"					"1D4+2+db"		"1"		"15"	"Fighting Knife*"				xxx
+	"25"					"1D6+db"		"1"		"12"	"Butcher Knife*"				xxx
+	"25"					"1D4+db"		"1"		"9"		"Small Knife*"					xxx
+	"40"					"1D8+db"		"1"		"4"		"Blackjack"						xxx
+	"25"					"1D8+db"		"1"		"20"	"Large Club"					xxx
+	"25"					"1D8+db"		"1"		"20"	"Cricket Bat"					xxx
+	"25"					"1D8+db"		"1"		"20"	"Poker"							xxx
+	"25"					"1D6+db"		"1"		"15"	"Small Club"					xxx
+	"25"					"1D6+db"		"1"		"15"	"Nightstick"					xxx
+	"15"					"strangle"		"1"		"1"		"Garrote"						xxx
+	"05"					"1D3/grapple"	"1"		"4"		"Bullwhip"						xx-
+	"%Throw%"				"1D8"			"1/2"	"8"		"War Boomerang"					xxx
+	"%Throw%"				"1D4"			"1"		"-"		"Thrown Rock"					xxx
+	"%Throw%"				"1D8+1"			"1/2"	"15"	"Thrown Spear"					xxx
+	"25"					"1D6+1+1/2 db"	"1"		"15"	"Quoit"							xxx
+	"10"					"1D6"			"1"		"15"	"Burning Torch"					xxx
+	"20"			        "stun"			"1"		"8"		"Taser (dart)"				    --x
+	"%Fist/Punch%"	        "stun"			"1"		"7"		"Taser (contact)"			    --x
+	"^DEX5"			        "stun 2D10 min"	"1"		"4"		"Mace (spray on attacker)"	    --x
+	"%Electrical Repair%"	"1D8+stun"		"1"		"6"		"Live Wire, 110-Volt"	        -xx
+	"%Electrical Repair%"	"2D8+stun"		"1"		"6"		"Live Wire, 220-Volt"	        --x
+
+_END MELEE
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//this script is used to calculate the investigator's income
+//it is called *before* the occupations are chosen, so an occupation script can override the
+//investigator's income. The contents of GLOBAL_SCRIPT are not available
+_BEGIN INCOME
+var value = dice.roll("1D10");
+if( era == 1890 ) income = "$" + (value*5000);
+if( era == 1920 ) income = "$" + (3500+(value*1000));
+if( era == 1990 ) income = "$" + (5000+(value*10000));
+_END INCOME
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//this is the global script section. It is attached to the start of the
+//occupational scripts when they are executed.
+_BEGIN GLOBAL_SCRIPT
+
+_END GLOBAL_SCRIPT
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//the occupations are defined differently to everything else. First, the * in front of the name indicates
+//it as being more "Lovecraftian" as indicated in the v5 rulebook. This is not used at the moment but has
+//been included for potential future expansion.
+//
+//An occupational skill list is defined as follows:
+//( [skill] [skill] [skill] ... ) xxx { script }
+//
+//a skill is defined as:
+// "Name" or * or [subset]
+//
+//* represents any skill
+//
+//a subset is defined as:
+// n { "Name" "Name" "Name" }
+//
+//where n is the number of items the investigator can pick from the subset
+//note: an occupation can only have ONE subset
+//
+// xxx is an era mask and is optional (defaults to xxx)
+// if you have an era mask, you can also specify a script
+// this is standard Byakhee script and the dice and investigator
+// objects are available, and the GLOBAL_SCRIPT section is attached to the top of
+// the script
+//
+_BEGIN OCCUPATIONS
+
+//  name                     skills
+    "(Custom)"                  (   * * * * * * * * * * * * * * * * * * * * ) xxx
+	"*Antiquarian"              (	"Art"	"Bargain"	"History"	"Law"	"Library Use"	"Other Language"	"Spot Hidden"	*	) xxx
+	"Artist"                    (	"Art"	"Fast Talk"	"History"	"Photography"	"Psychology"	"Spot Hidden"	*	*	) xxx
+	"Athlete"                   (	"Climb"	"Dodge"	"Jump"	"Ride"	"Swim"	"Throw"	*	*	) xxx
+	"*Author"                   (	"History"	"Library Use"	"Other Language"	"Own Language"	"Persuade"	"Psychology"	*	*	) xxx
+	"Clergyman"                 (	"Accounting"	"First Aid"	"History"	"Library Use"	"Listen"	"Other Language"	"Persuade"	"Psychology"	) xxx
+	"Criminal"                  (	"Bargain" "Fast Talk" "Handgun"	"Locksmith" "Sneak" "Spot Hidden" * *	) xxx
+	"*Dilettante"               (	"Credit Rating"	"Ride"	*	*	*	*	) xxx
+	"*Doctor Of Medicine"       (	"Biology"	"Credit Rating"	"First Aid"	"Other Language$Latin"	"Medicine"	"Pharmacy"	"Psychoanalysis"	"Psychology"	) xxx
+	"Engineer"                  (	"Chemistry"	"Electrical Repair"	"Geology"	"Library Use"	"Mechanical Repair"	"Physics"	*	*	) xxx
+	"Entertainer"               (	"Art"	"Credit Rating"	"Dodge"	"Fast Talk"	"Listen"	"Other Language"	"Psychology"	*	) xxx
+	"Farmer/Woodsman"           (	"Electrical Repair"	"First Aid"	"Mechanical Repair"	"Natural History"	"Operate Hvy. Machine"	"Rifle"	"Track"	*	) xxx
+	"Foot Soldier"              (	"Climb"	"Conceal"	"First Aid"	"Hide"	"Listen"	"Sneak"	"Rifle"	"Machine Gun"	) xxx
+	"Hobo"                      (	"Bargain"	"Fast Talk"	"Hide"	"Listen"	"Natural History"	"Spot Hidden"	"Sneak"	*	) xxx
+	"*Journalist"               (	"Fast Talk"	"Other Language"	"Own Language"	"Persuade"	"Photography"	"Psychology"	*	*	) xxx
+	"Lawyer"                    (	"Bargain"	"Credit Rating"	"Fast Talk"	"Law"	"Library Use"	"Persuade"	"Psychology"	*	) xxx
+	"Military Commander"        (	"Accounting"	"Bargain"	"Credit Rating"	"Handgun"	"History"	"Navigate"	"Persuade"	"Psychology"	) xxx
+	"Missionary"                (	"Art"	"First Aid"	"Mechanical Repair"	"Natural History"	"Persuade"	"Other Language"	*	*	) xxx
+	"Musician"                  (	"Art"	"Bargain"	"Fast Talk"	"Listen"	"Persuade"	"Psychology"	*	*	) xxx
+	"Parapsychologist"          (	"Anthropology"	"History"	"Library Use"	"Occult"	"Photography"	"Psychology"	"Other Language"	*	*	) xxx
+	"*Police Detective"         (	"Bargain"	"Fast Talk"	"Handgun"	"Law"	"Persuade"	"Psychology"	"Spot Hidden"	*	) xxx
+	"Police Patrolman"          (	"Fast Talk"	"First Aid"	"Handgun"	"Nightstick"	"Law"	"Listen"	2 {	"Drive Auto"	"Martial Arts"	"Ride"	"Spot Hidden"	"Drive Carriage"	}	) xxx
+	"Private Investigator"      (	"Bargain"	"Fast Talk"	"Handgun"	"Law"	"Locksmith"	"Photography"	"Psychology"	1 { "Hide"	"Listen"	"Martial Arts"	"Sneak"	"Spot Hidden"	}	) xxx
+	"*Professor"                (	"Credit Rating"	"Library Use"	"Other Language"	"Persuade"	"Psychology"	2 {	"Anthropology"	"Archaeology"	"Astronomy"	"Biology"	"Chemistry"	"Geology"	"History"	"Medicine"	"Natural History"	"Physics"	}	*	) xxx
+	"Revolutionary"             (	"Conceal"	"Handgun"	"Hide"	"Martial Arts"	"Persuade"	"Rifle"	"Spot Hidden"	*	)	 xxx
+	"Tribal Fisherman"          (	"Listen"	"Mechanical Repair"	"Natural History"	"Pilot Boat"	"Occult"	"Spot Hidden"	"Swim"	"Throw"	) xxx
+	"Tribal Warrior"            (	1 {	"Large Club"	"Small Club"	"War Boomerang"	"Thrown Rock"	"Thrown Spear"	"Burning Torch"	}	"Natural History"	"Occult"	"Persuade"	"Track"	"Spot Hidden"	*	) xxx
+ 
+_END OCCUPATIONS
+

@@ -1,0 +1,508 @@
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+//// Call of Cthulhu Version 5 Skills, Firearms, Melee weapons and Occupations       ////
+/////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////
+// This file contains the data tables required by the program. Each section is bounded
+// by a _BEGIN [name] and an _END [name]. Comments start with a // inside each section
+// and any text outside the sections is ignored.
+// It shouldn't be too hard to add or change anything, but make sure you take a back-up
+// - the parser for this file has hardly been tested at all!
+//
+// Also, I would expect any attempt to break the program by putting strange values in
+// would probably succeed.
+//
+/////////////////////////////////////////////////////////////////////////////////////////
+
+
+_BEGIN CREDIT
+Walker in the Wastes Skills, by Ricardo J. Méndez
+Based on the 1920s Investigator Companion Skills by Ernest Mueller
+_END CREDIT
+
+
+_BEGIN SKILLS
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//A * in the name will be removed when it's displayed, but it will be sorted before skills
+//without one.
+//A * at the start of a skill base means it can't be modified. A ^ means it will use the current
+//investigator's statistic for the base, multiplied by the number immediately after it. 
+//An F before
+//the skill causes it to appear in the "Firearms" section of the skill list, rather than with the skills
+//The 'extra' column usually contains 0. If it contains more, the skill will have that many subsets, such
+//as art: painting or other language: latin etc.
+//The era code represents which eras the skill exists in: an  x means it will, a - means it won't
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//base    extra name                    eras [1890 1920 1990]: - = no, x = yes
+    "10"    0	"*Accounting"           xxx
+    "0"     0	"*Anthropology"         xxx
+    "0"     0	"*Archaeology"          xxx
+    "5"     1	"*Art"                  xxx
+    "0"     0	"*Astronomy"            xxx
+    "5"     0	"*Bargain"              xxx
+    "10"    0   "*Boating"		xxx
+    "0"     0	"*Biology"              xxx
+    "0"	    0   "*Carthography"		xxx
+    "0"     0	"*Chemistry"            xxx
+    "40"    0	"*Climb"                xxx
+    "15"    0	"*Conceal"              xxx
+    "15"    0	"*Credit Rating"        xxx
+    "*0"    0	"*Cthulhu Mythos"       xxx
+    "^DEX2" 0	"*Dodge"                xxx
+    "20"    0	"*Drive Auto"           -xx
+    "10"    0 	"*Drive Sled/Sledge"    xxx
+    "10"    0	"*Electrical Repair"    xxx
+    "5"     0	"*Fast Talk"            xxx
+    "30"    0	"*First Aid"            xxx
+    "0"     0	"*Geology"              xxx
+    "10"    0	"*Hide"                 xxx
+    "20"    0	"*History"              xxx
+    "25"    0	"*Jump"                 xxx
+    "5"     0	"*Law"                  xxx
+    "25"    0	"*Library Use"          xxx
+    "25"    0	"*Listen"               xxx
+    "0"     0	"*Locksmith"            xxx
+    "0"     0	"*Martial Arts"         xxx
+    "20"    0	"*Mechanical Repair"    xxx
+    "5"     0	"*Medicine"             xxx
+    "10"    0	"*Natural History"      xxx
+    "5"     2   "*Navigate"		xxx
+    "5"     0	"*Occult"               xxx
+    "0"     0	"*Operate Hvy. Machine" xxx
+    "0"     3	"*Other Language"       xxx
+    "^EDU5" 0	"*Own Language"         xxx
+    "15"    0	"*Persuade"             xxx
+    "0"     0	"*Pharmacy"             xxx
+    "10"    0	"*Photography"          xxx
+    "0"     0	"*Physics"              xxx
+    "0"     0	"*Pilot"                -xx
+    "0"     0	"*Psychoanalysis"       -xx
+    "5"     0	"*Psychology"           xxx
+    "5"     0	"*Ride"                 xxx
+    "10"    0	"*Sneak"                xxx
+    "25"    0	"*Spot Hidden"          xxx
+    "25"    0	"*Swim"                 xxx
+    "25"    0	"*Throw"                xxx
+    "10"    0	"*Track"                xxx
+// skills from 1920's Investgator's Companion
+    "^DEX2" 0	"*Block"                xxx
+    "0"     0	"*Disguise"             xxx
+    "0"     0     "*Forensics"            -xx
+    "0"     0	"*Hypnotism"		xxx
+    "0"	0 	"*Pick Pocket"		xxx
+    "0" 	0 	"*Forensics"		xxx
+    "0" 	0 	"*Antiques"			xxx
+// and the firearms
+    "F20"	0    "*Handgun"              xxx
+    "F15"	0    "*Machine Gun"          xxx
+    "F25"	0    "*Rifle"                xxx
+    "F30"   0    "*Shotgun"              xxx
+    "F15"   0    "*Submachine Gun"       -xx
+
+_END SKILLS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_BEGIN FIREARMS
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//as with the skills, a ^ means it uses the given core stat. In addition, a %skill name% means it will use
+//that skill as the base. Using ^ and %% will result in them being added (usually - as I say, the parser 
+//hasn't been fully tested!)
+//The * after the name indicates it can impale and is not used at all
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //skill			Dmg			Range			Sht/Rnd	Bul In Gun		HP		Mal		Name						era
+//HANDGUNS	
+	"20"			"1D6+1"		"10 yds"		"1/4"	    	    "1"			"8"		"95"	"Flintlock Pistol*"			xxx
+	"20"			"1D6"			"10 yds"		"3"		    "6"			"6"		"00"	".22 Short Automatic*"		-xx
+	"20"			"1D6"			"3 yds"	   	"1"		    "1"			"5"		"00"	".25 Derringer*"		    xx-
+
+	"20"			"1D8"			"15 yds"		"3"		    "6"			"10"	"00"	".32 Revolver*"				xxx
+	"20"			"1D8"			"15 yds"		"3"		    "6"			"8"		"99"	".32 Automatic*"			-xx
+	
+	"20"			"1D10"		"15 yds"		"2"		    "6"			"10"	"00"	".38 Revolver*"				xxx
+	"20"			"1D10"		"15 yds"		"2"		    "6"			"8"		"99"	".38 Automatic*"			-xx
+	
+	"20"			"1D10"		"20 yds"		"2"		    "8"			"9"		"99"	"Model P08 Luger*"			-xx
+	"20"			"1D10"		"15 yds"		"1"		    "6"			"10"	"00"	".41 Revolver*"				x--
+
+	"20"			"1D10+2"		"15 yds"		"1"		    "6"			"10"	"00"	".45 Revolver*"				xxx
+	"20"			"1D10+2"		"15 yds"		"1"		    "7"			"8"		"00"	".45 Automatic*"			-xx
+
+//RIFLES    
+    "25"            "1D10+4"        "60 yds"        "1/4"	    "1"         "12"    "95"    ".58 Springfield Musket*"   xxx
+    "25"            "1D6+2"         "30 yds"        "1"		    "6"         "9"     "99"    ".22 Bolt-Action Rifle*"    xxx
+    "25"            "2D6"           "50 yds"        "1"			"6"         "8"     "98"    ".30 Level-Action Carbine*" xxx
+    
+    "25"            "1D8+1D6+3"     "80 yds"        "1/3"		"1"			"12"	"00"	".45 Martini-Henry Rifle*"	x--
+	"15"			"2D6+1"			"20 yds"		"1/3"		"1"			"7"		"88"	"Moran's Air Rifle*"		x--
+	
+	"25"			"2D6+4"			"110 yds"		"1/2"	    "10"		"12"	"00"	".303 Lee-Enfield*"			xxx
+	"25"			"2D6+4"			"110 yds"		"1/2"	    "5"			"12"	"00"	"Mosin-Nagant M1891 7.62mm bolt-action*"	xxx
+	"25"			"2D6+4"			"110 yds"		"1/2"	    "5"			"12"	"00"	".30-06 Bolt-Action Rifle*"	xxx
+
+	"25"			"1D8+1D6+4"		"90 yds"		"1"			"5"			"12"	"98"	".444 Marlin Rifle*"		--x
+	"15"			"3D6+4"			"100 yds"		"1 or 2"    "2"			"12"	"00"	"Elephant Gun (2B)*"		xx-
+
+//SHOTGUNS
+	"30"			"2D6/1D6/1D3"	"10/20/50"	    "1 / 2"	    "2"			"12"	"00"	"20-gauge Shotgun (2B)"		xx-
+	"30"		  "2D6+2/1D6+1/1D4"	"10/20/50"	    "1 / 2"	    "2"			"12"	"00"	"16-gauge Shotgun (2B)"		xx-
+
+	"30"			"4D6/2D6/1D6"	"10/20/50"	    "1 / 2"	    "2"			"12"	"00"	"12-gauge Shotgun (2B)"		xx-
+	"30"			"4D6/2D6/1D6"	"10/20/50"	    "1"			"5"			"10"	"00"	"12-gauge Shotgun (pump)"	-xx
+
+	"30"			"4D6/2D6/1D6"	"10/20/50"	    "2"			"5"			"10"	"00"	"12-gauge Shotgun (semi)"	--x
+	"30"			"4D6/1D6"		"5/10 yds"		"1 / 2"     "2"			"14"	"00"	"12-gauge sawn off (2B)"    -x-
+	"30"		  "4D6+2/2D6+1/1D6"	"10/20/50"	    "1 / 2"     "2"			"12"	"00"	"10-gauge Shotgun (2B)"		x--
+
+//ASSAULT RIFLES
+	"25"			"2D6+1"			"90 yds"	    "2 / burst" "30"		"12"	"00"	"AK-47"						--x
+	"25"			"2D6+1"			"90 yds"	    "2 / burst" "30"		"12"	"00"	"AKM"						--x
+	"25"			"2D8"			"120 yds"	    "2 / burst" "30"		"12"	"97"	"AK-74"						--x
+	"25"			"2D10+4"		"210 yds"		"1"		    "11"		"12"	"96"	"Barrett Model 82"			--x
+	
+	"25"			"2D6+3"			"100 yds"	    "1 / burst" "20"		"11"	"97"	"FN FAL"					--x
+	"25"			"2D6+3"			"110 yds"	    "1 / burst" "20"		"12"	"98"	"Galil AR"					--x
+	"25"			"2D8"			"130 yds"	    "1/burst 3"	"30"		"11"	"97"	"M16A2"						--x
+
+//SUBMACHINE GUNS
+	"15"			"1D10+2"		"20 yds"	    "1 / burst" "20/33"		"8"		"96"	"Thomson"					-x-
+	"15"			"1D10"			"45 yds"	    "2 / burst" "15/30"		"10"	"97"	"Hechler & Kock MP5"		--x
+	"15"			"1D8"			"20 yds"	    "3 / burst" "32"		"6"		"96"	"Ingram MAC-11"				--x
+	
+	"15"			"1D8"			"20 yds"	    "3 / burst" "20"		"6"		"96"	"Skorpion SMG"				--x
+	"15"			"1D10"			"40 yds"	    "2 / burst" "32"		"8"		"98"	"Uzi SMG"					--x
+
+//MACHINE GUNS
+	"15"			"2D6+4"			"100 yds"		"burst"		"200"		"20"	"96"	"Model 1882 Gatling"	    x--
+	"15"			"2D6+4"			"90 yds"	    "1/2 / burst" "20"		"11"	"00"	"Browning Aut. Rifle"	    -x-
+	"15"			"2D6+3"			"150 yds"		"burst"		"250"		"12"	"96"	".30 Browning belt-fed"	    -x-
+	"15"			"2D6+4"			"200 yds"		"burst"		"300"		"18"	"00"	"Maschinegewehr belt-fed"   -x-
+	"15"			"2D8"			"130 yds"		"burst"		"30/200"	"11"	"99"	"FN Minimi, clip/belt"	    --x
+
+//EXPLOSIVES ETC.
+	"%Throw%"		"2D6+luck"	    "thrown"		"1/2"	    "1 only"	"1"		"95"	"Molotov Cocktail"			-xx
+	"25"			"1D10+1D3 burn"	"10"			"1/2"		"1"			"11"	"00"	"Signal Pistol"	xxx
+	"25"			"3D6/2yds"		"20"			"1/3"		"1"			"12"	"99"	"M79 Grenade Launcher"	    --x
+	
+	"%Throw%"		"5D6/2yds"		"thrown"		"1/2"		"1 only"	"1"		"99"	"Dynamite Stick"			xxx
+"%Electrical Repair%"	"D6/3yds"	"in place"		"one use"	"1 only"	"3"		"95"	"Pipe Bomb"					xxx
+"%Electrical Repair%"	"6D6/3yds"	"in place"		"one use"	"1 only"	"15"	"99"	"Plastique (C-4), 1lb."		--x
+
+	"%Throw%"		"4D6/4yds"		"thrown"		"1/2"		"1 only"	"8"		"99"	"Hand Grenade"				-xx
+	"00"			"6D6/6yds"		"500 yds"		"2"			"separate"	"10"	"00"	"81mm Mortar"				--x
+	"00"			"10D6/2yds"		"500 yds"		"1/4"		"separate"	"40"	"99"	"75mm Field Gun"			-xx
+
+	"%Hide%^LUCK"	"4D6/5yds"		"in place"		"in place"	"one use"	"9"		"99"	"AP Mine"					-xx
+	"^LUCK"	      "6D6+6/3D6+2/1D6"	"10/25/50"	    "in place"	"one use"	"12"	"99"	"Claymore Mine"				--x
+	"05"			"2D6+shock"		"25 yds"		"1"		    "min 10"    "6"		"93"	"Flamethrower"				--x
+
+_END FIREARMS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+_BEGIN MELEE
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//must have at least one * in front of fist/puch etc to make it appear in normal skill listings rather
+//than in weapons listing. The other *s keep them in order when the skills are sorted alphabetically. 
+//Otherwise, the syntax for everything is the same. The * after the skill indicates it can impale and is
+//not parsed at all
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	//skill				Dmg			Atks		HP	Name					era
+	"50"					"1D3+db"		"1"		"-"	"****Fist/Punch"			xxx
+	"10"					"1D4+db"		"1"		"-"	"***Head Butt"			xxx
+	"25"					"1D6+db"		"1"		"-"	"**Kick"				xxx
+	"25"					"special"		"1"		"-"	"*Grapple"				xxx
+	"20"					"1D6+1+db"		"1"		"10"	"Fencing Foil*"			xxx
+	"20"					"1D6+db"		"1"		"10"	"Sword Cane*"			xxx
+	"10"					"1D6+1+db"		"1"		"15"	"Rapier*"				xxx
+	"10"					"1D6+1+db"		"1"		"15"	"Heavy Epee*"			xxx
+	"15"					"1D8+1+db"		"1"		"20"	"Cavalier Sabre"			xxx
+	"10"					"1D8+1+D6"		"1"		"15"	"Cavalry Lance*"	            xxx
+	"20"					"1D8+2+db"		"1"		"15"	"Wood Axe"				xxx
+	"20"					"1D6+1+db"		"1"		"12"	"Hatchet"				xxx
+	"20"					"1D6+1+db"		"1"		"12"	"Sickle"				xxx
+	"25"					"1D4+2+db"		"1"		"15"	"Fighting Knife*"			xxx
+	"25"					"1D6+db"		"1"		"12"	"Butcher Knife*"			xxx
+	"25"					"1D4+db"		"1"		"9"	"Small Knife*"			xxx
+	"40"					"1D8+db"		"1"		"4"	"Blackjack"				xxx
+	"25"					"1D8+db"		"1"		"20"	"Large Club"			xxx
+	"25"					"1D8+db"		"1"		"20"	"Cricket Bat"			xxx
+	"25"					"1D8+db"		"1"		"20"	"Poker"				xxx
+	"25"					"1D6+db"		"1"		"15"	"Small Club"			xxx
+	"25"					"1D6+db"		"1"		"15"	"Nightstick"			xxx
+	"15"					"strangle"		"1"		"1"	"Garrote"				xxx
+	"05"					"1D3/grapple"	"1"		"4"	"Bullwhip"				xx-
+	"%Throw%"				"1D8"			"1/2"		"8"	"War Boomerang"			xxx
+	"%Throw%"				"1D4"			"1"		"-"	"Thrown Rock"			xxx
+	"%Throw%"				"1D8+1"		"1/2"		"15"	"Thrown Spear"			xxx
+	"25"					"1D6+1+1/2 db"	"1"		"15"	"Quoit"				xxx
+	"10"					"1D6"			"1"		"15"	"Burning Torch"			xxx
+	"%Electrical Repair%"		"1D8+stun"		"1"		"6"	"Live Wire, 110-Volt"	      -xx
+// New Weapons for 1920's Investigator's Companion
+	"25"					"1D8+db"		"1"		"20"	"Baseball Bat"			xxx
+	"25"					"1D6+db"		"1"		"15"	"Golf Club"				xxx
+	"25"					"1D6+db"		"1"		"15"	"Tennis Racket"			xxx
+	"25"					"1D4+db"		"1"		"9"	"Straight Razor"			xxx
+	"20"					"1D6+db"		"1"		"10"	"Bayonet*"				xxx
+_END MELEE
+
+
+
+
+
+
+
+
+
+
+
+
+_BEGIN OCCUPATIONS
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//the occupations are defined differently to everything else. First, the * in front of the name indicates
+//it as being more "Lovecraftian" as indicated in the v5 rulebook. This is not used at the moment but has
+//been included for potential future expansion.
+//
+//An occupational skill list is defined as follows:
+//( [skill] [skill] [skill] ... )
+//
+//a skill is defined as:
+// "Name" or * or [subset]
+//
+//* represents any skill
+//
+//a subset is defined as:
+// n { "Name" "Name" "Name" }
+//
+//where n is the number of items the investigator can pick from the subset
+//note: an occupation can only have ONE subset
+//
+//
+// With the Doctor of Medicine skill, the "Other Language" has a $ and "Latin" after it. This is not used
+// but has been included for potential future expansion.
+//
+// I don't know what would happen if the "(custom)" skill wasn't listed or alphabetically first
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+//  name                     skills
+    "(Custom)"                  (   * * * * * * * * * * * * * * * * * * * * )
+	"*Antiquarian"              (	"Art"	"Bargain"	"History"	"Law"	"Library Use"	"Other Language"	"Spot Hidden"	*	)
+	"Artist"                    (	"Art"	"Fast Talk"	"History"	"Photography"	"Psychology"	"Spot Hidden"	*	*	)
+	"Athlete"                   (	"Climb"	"Dodge"	"Jump"	"Ride"	"Swim"	"Throw"	*	*	)
+	"*Author"                   (	"History"	"Library Use"	"Other Language"	"Own Language"	"Persuade"	"Psychology"	*	*	)
+	"Clergyman"                 (	"Accounting"	"First Aid"	"History"	"Library Use"	"Listen"	"Other Language"	"Persuade"	"Psychology"	)
+	"Criminal"                  (	"Bargain" "Fast Talk" "Handgun"	"Locksmith" "Sneak" "Spot Hidden" * *	)
+	"*Dilettante"               (	"Credit Rating"	"Ride"	*	*	*	*	)
+	"*Doctor Of Medicine"       (	"Biology"	"Credit Rating"	"First Aid"	"Other Language$Latin"	"Medicine"	"Pharmacy"	"Psychoanalysis"	"Psychology"	)
+	"Engineer"                  (	"Chemistry"	"Electrical Repair"	"Geology"	"Library Use"	"Mechanical Repair"	"Physics"	*	*	)
+	"Entertainer"               (	"Art"	"Credit Rating"	"Dodge"	"Fast Talk"	"Listen"	"Other Language"	"Psychology"	*	)
+	"Farmer/Woodsman"           (	"Electrical Repair"	"First Aid"	"Mechanical Repair"	"Natural History"	"Operate Hvy. Machine"	"Rifle"	"Track"	*	)
+	"Foot Soldier"              (	"Climb"	"Conceal"	"First Aid"	"Hide"	"Listen"	"Sneak"	"Rifle"	"Machine Gun"	)
+	"Hobo"                      (	"Bargain"	"Fast Talk"	"Hide"	"Listen"	"Natural History"	"Spot Hidden"	"Sneak"	*	)
+	"*Journalist"               (	"Fast Talk"	"Other Language"	"Own Language"	"Persuade"	"Photography"	"Psychology"	*	*	)
+	"Lawyer"                    (	"Bargain"	"Credit Rating"	"Fast Talk"	"Law"	"Library Use"	"Persuade"	"Psychology"	*	)
+	"Military Commander"        (	"Accounting"	"Bargain"	"Credit Rating"	"Handgun"	"History"	"Navigate"	"Persuade"	"Psychology"	)
+	"Missionary"                (	"Art"	"First Aid"	"Mechanical Repair"	"Natural History"	"Persuade"	"Other Language"	*	*	)
+	"Musician"                  (	"Art"	"Bargain"	"Fast Talk"	"Listen"	"Persuade"	"Psychology"	*	*	)
+	"Parapsychologist"          (	"Anthropology"	"History"	"Library Use"	"Occult"	"Photography"	"Psychology"	"Other Language"	*	*	)
+	"*Police Detective"         (	"Bargain"	"Fast Talk"	"Handgun"	"Law"	"Persuade"	"Psychology"	"Spot Hidden"	*	)
+	"Police Patrolman"          (	"Fast Talk"	"First Aid"	"Handgun"	"Nightstick"	"Law"	"Listen"	2 {	"Drive Auto"	"Martial Arts"	"Ride"	"Spot Hidden"	}	)
+	"Private Investigator"      (	"Bargain"	"Fast Talk"	"Handgun"	"Law"	"Locksmith"	"Photography"	"Psychology"	1 { "Hide"	"Listen"	"Martial Arts"	"Sneak"	"Spot Hidden"	}	)
+	"*Professor"                (	"Credit Rating"	"Library Use"	"Other Language"	"Persuade"	"Psychology"	2 {	"Anthropology"	"Archaeology"	"Astronomy"	"Biology"	"Chemistry"	"Geology"	"History"	"Medicine"	"Natural History"	"Physics"	}	*	)
+	"Revolutionary"             (	"Conceal"	"Handgun"	"Hide"	"Martial Arts"	"Persuade"	"Rifle"	"Spot Hidden"	*	)	
+	"Inuit Hunter"		    (   2 { "Rifle"         "Shotgun"	"Thrown Spear" }  "Other Language"   "Fist/Punch"  "Kick"  "Fighting Knife*"  "Navigate$Land"  "Drive Sled/Sledge"  "Boating")
+	"Tribal Fisherman"          (	"Listen"	"Mechanical Repair"	"Natural History"  "Occult"	"Spot Hidden"	"Swim"	"Throw"	)
+	"Tribal Warrior"            (	1 {	"Large Club"	"Small Club"	"War Boomerang"	"Thrown Rock"	"Thrown Spear"	"Burning Torch"	}	"Natural History"	"Occult"	"Persuade"	"Track"	"Spot Hidden"	*	)
+//  Occupations from Pagan Publishing's Walker in the Wastes
+//  Created by Ricardo J. Méndez - rmendez@geocities.com
+	"Geologist"                 (   "Carthography"   "Chemistry"     "Geology"   "Art"  "Archaeology"  )
+//  Occupations from 1920's Investigator's Companion version 2
+//  NB: A lot of interpretation was required to fit the listed skills into anything resembling a real skill list.  
+//  For example, all cases of the skill "English" have been converted to "Own Language".  I have also made some
+//  of the occupation suitable for other time periods by adding choices between appropriate skills (e.g. Drive Auto and Ride).
+//	Adventurers and Daredevils
+      "Aviator"			( "Accounting" "Bargain" "Credit Rating" "Electrical Repair" "Listen" "Mechanical Repair" "Navigate" "Pilot" "Spot Hidden" ) -xx
+	"Big Game Hunter"		( "Bargain" "Rifle" "First Aid" "Hide" "Jump" "Fighting Knife*" "Listen" "Natural History" "Navigate" "Other Language" "Sneak" "Track" ) 			xxx
+	"Charter Boat Captain"	( "Accounting" "Bargain" "Credit Rating" "First Aid" "Listen" "Natural History" "Navigate" "Persuade" "Pilot" "Spot Hidden" ) 	xxx
+	"Explorer"			( "Climb" "Dodge"  1 { "Handgun" "Shotgun" "Rifle" } "First Aid" "History" "Jump" "Medicine" "Natural History" "Navigate" "Other Language" "Photography" "Swim" "Archaeology" "Anthropology" )		xxx
+	"Mountain Climber" 	( "Climb" "First Aid" "Jump" "Listen" "Navigate" "Other Language" "Photography" "Track" )								xxx
+	"Prospector"		( "Climb" "First Aid" "Geology" "History" "Jump" "Natural History" "Navigate" "Spot Hidden" )							xx-
+	"Treasure Hunter"		( "Bargain" "Climb" "Drive Auto" "Electrical Repair" "History" "Jump" "Mechanical Repair" "Persuade" "Pilot" "Pilot" "Spot Hidden" )  		xxx
+//	Arts, Creative
+	"Architect"			( "Accounting" "Art" "Bargain" "Credit Rating" "Own Language" "Library Use" "Persuade" "Psychology" ) 		xxx
+	"Designer"			( "Art" "Accounting" "Bargain" "Electrical Repair" "Mechanical Repair" "Photography" "Psychology" )								xxx
+	"Painter/Sculptor"	( "Art" "Bargain" "History" "Library Use" "Persuade" "Photography" "Psychology" ) 						xxx
+	"Photographer" 		( "Accounting" "Chemistry" "Photography" "Persuade" "Physics" "Psychology" ) 							xxx
+	"Writer"			( "Art" "Own Language" "Fast Talk" "Library Use" "Other Language" "Persuade" "Psychology" ) 		xxx
+//	Arts, Performing
+	"Film Crew"			( "Art" "Climb" "Drive Auto" "Electrical Repair" "Mechanical Repair" "Photography" ) -xx
+	"Film Star"			( "Art" "Bargain" "Disguise" "Own Language" "Fast Talk" "Persuade" "Psychology" ) -xx
+	"Musician, Jazz"		( "Art" "Bargain" "Fast Talk" "Listen" "Persuade" "Psychology" ) -xx
+	"Musician, Legitimate" 	( "Accounting" "Art" "Bargain" "Listen" "Persuade" "Psychology" )	xxx
+	"Stage Actor"		( "Art" "Disguise" "Own Language" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Stage Hand"		( "Art" "Own Language" "Fast Talk" "Disguise" "Persuade" "Psychology" ) xxx
+	"Stunt Man"			( "Climb" "Disguise" "Dodge" "Drive Auto" "Electrical Repair" "First Aid" "Fist/Punch" "Grapple" "Head Butt" "Jump" "Kick" "Mechanical Repair" "Pilot" "Ride" "Swim" "Throw" )-xx
+	"Talent Agent"		( "Accounting" "Bargain" "Fast Talk" "Law" "Persuade" "Psychology" ) xxx
+//	Athletics
+	"Acrobat"			( "Bargain" "Climb" "Dodge" "Jump" "Other Language" "Throw" * ) xxx
+	"Boxer/Wrestler"		( "Fist/Punch" "Grapple" "Dodge" "Head Butt" "Kick" "Throw" )xxx
+	"Golf Pro" 			( "Bargain" "Golf Club" "Credit Rating" "Persuade" "Psychology" "Spot Hidden" ) xxx
+	"Manager/Coach" 		( "Accounting" "Bargain" "Block" "Dodge" "Fast Talk" "First Aid" "Head Butt" "Kick" "Persuade" "Psychology" ) xxx
+	"Professional Sports Athelete"	( "Block" "Baseball Bat" "Dodge" "Grapple" "Head Butt" "Jump" "Kick" "Spot Hidden" "Throw" ) xxx
+	"Tennis Pro"		( "Bargain" "Tennis Racket" "Credit Rating" "Dodge" "Jump" "Persuade" "Psychology" "Spot Hidden" ) xxx
+	"Track and Field"		( "Climb" "Dodge" "Jump" "Other Language" "Throw" * ) 									xxx
+//	Business
+	"Accountant"		( "Accounting" "Credit Rating" ) 						xxx
+	"Barber"			( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" "Straight Razor" ) xxx
+	"Clerk"			( "Accounting" "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Company Officer/Executive"	( "Accounting" "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Salesman"			( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Secretary"			( "Accounting" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Shopkeeper"		( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" ) 								xxx
+	"Small Business Owner"	( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Stock Broker"		( "Accounting" "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Switchboard Operator"	( "Credit Rating" "Own Language" "Fast Talk" "Listen" "Persuade" "Psychology" ) -xx
+	"Traveling Salesman"	( "Accounting" "Bargain" "Drive Auto" "Fast Talk" "Navigate" "Persuade" "Psychology" ) -xx
+//	Clergy
+	"Bible Salesman"		( "Accounting" "Bargain" "Persuade" "Psychology" )										xxx
+	"Catholic Priest"		( "Accounting" "Bargain" "Credit Rating" "Own Language" "Other Language$Latin" "Library Use" "Occult" "Other Language" "Persuade" "Psychology" ) xxx
+	"Charismatic Cult Leader"	( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Deacon/Elder"		( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" * ) xxx
+	"Itinerant Preacher"	( "Bargain" "Own Language" "Fast Talk" "Hide" "Persuade" "Psychology" "Sneak" ) xxx
+	"Missionary - 1920"		( "Anthropology" "Bargain" "Own Language" "Occult" "Other Language" "Persuade" "Psychology" ) xxx
+	"Protestant Minister"	( "Accounting" "Bargain" "Credit Rating" "Own Language" "Library Use" "Persuade" "Psychology" ) xxx
+	"Rabbi"			( "Credit Rating" "Own Language" "Other Language$Hebrew" "History" "Library Use" "Occult" "Other Language" "Persuade" "Psychology" ) xxx
+//	Criminals
+	"Bank Robber"		( "Small Club" "Conceal" 1 { "Drive Auto" "Ride" } "Handgun" "Shotgun" "Submachine Gun" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Fighting Knife*" ) xxx
+	"Bookie"			( "Accounting" "Bargain" "Conceal" "Credit Rating" "Fast Talk" "Persuade" "Psychology" ) xxx
+	"Bootlegger/Thug"		( "Small Club" "Conceal" 1 { "Drive Auto" "Ride" } "Handgun" "Shotgun" "Submachine Gun" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Fighting Knife*" ) xxx
+	"Burglar"			( "Conceal" "Climb" "Hide" "Jump" "Listen" "Locksmith" "Sneak" "Spot Hidden" ) xxx
+	"Con Man"			( "Bargain" "Disguise" "Fast Talk" "Listen" "Persuade" "Psychology" "Spot Hidden" ) xxx
+	"Forger/Counterfeiter"	( "Accounting" "Art" "Bargain" "Conceal" "Spot Hidden" "Persuade" "Psychology" )  xxx
+	"Gambler"			( "Accounting" "Bargain" "Conceal" "Fast Talk" "Listen" "Persuade" "Psychology" "Spot Hidden" )  xxx
+	"Gangster"			( "Bargain" "Small Club" "Conceal" "Drive Auto" "Handgun" "Shotgun" "Submachine Gun" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Fighting Knife*" "Persuade" "Psychology" ) -xx
+	"Hit Man"			( "Bargain" "Small Club" "Conceal" "Handgun" "Rifle" "Submachine Gun" "Shotgun" "Machine Gun" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Fighting Knife*" "Sneak" "Hide" )  xxx
+	"Hooker"			( "Bargain" "Conceal" "Fast Talk" "Hide" "Persuade" "Psychology" ) xxx
+	"Loan Shark"		( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" ) 											xxx
+	"Pick Pocket"		( "Conceal" "Fast Talk" "Hide" "Listen" "Sneak" "Spot Hidden" ) 											xxx
+	"Shifty Accountant/Lawyer"	( "Accounting" "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Law" "Persuade" "Psychology" ) 											xxx
+	"Smuggler"			( "Accounting" "Bargain" "Conceal" "Fast Talk" "Handgun" "Rifle" "Shotgun" "Listen" "Navigate" "Other Language" "Persuade" "Pilot" "Pilot" "Psychology" "Spot Hidden" ) xxx
+	"Spy"				( "Bargain" "Disguise" "Fast Talk" "Handgun" "Machine Gun" "Hide" "Fighting Knife*" "Listen" "Other Language" "Persuade" "Psychology" "Sneak" "Spot Hidden" )   xxx
+//	Journalism
+	"Columnist"			( "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) 											xxx
+	"Copywriter"		( "Own Language" "Fast Talk" "Listen" "Persuade" "Psychology" ) 											xxx
+	"Editor"			( "Accounting" "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) 											xxx
+	"Foreign Correspondent"	( "Bargain" "Conceal" "Fast Talk" "Hide" "Other Language" "Persuade" "Psychology" "Sneak" ) 											xxx
+	"Photojournalist"		( "Climb" "Bargain" "Own Language" "Fast Talk" "Jump" "Other Language" "Persuade" "Photography" "Psychology" ) 											xxx
+	"Radio Announcer"		( "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" ) 												-xx
+	"Reporter"			( "Bargain" "Climb" "Conceal" "Disguise" "Own Language" "Fast Talk" "Hide" "Jump" "Listen" "Persuade" "Psychology" "Sneak" "Spot Hidden" ) 			xxx
+//	Labor, Rural
+	"Lumberjack"		( "Wood Axe" "Bargain" "Block" "Climb" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Jump" )											xxx
+	"Miner"			( "Climb" "Geology" "Jump" "Operate Hvy. Machine" "Spot Hidden" )											xxx
+//	Labor, Urban
+	"Bartender"			( "Accounting" "Large Club" "Fast Talk" "Fist/Punch" "Persuade" "Psychology" )											xxx
+	"Bus Driver/Streetcar Conductor"	( "Accounting"  "Drive Auto" "Electrical Repair" "Mechanical Repair" "Navigate" "Persuade" "Psychology" ) 											xxx
+	"Cocktail Waitress"	( "Accounting" "Fast Talk" "Persuade" "Psychology" )											xxx
+	"Laborer"			( "Operate Hvy. Machine" )											xxx
+	"Skilled Trade/Mechanic"	( "Climb" "Electrical Repair" "Mechanical Repair" "Operate Hvy. Machine" ) 											xxx
+	"Taxi Driver"		( "Accounting" "Bargain" "Drive Auto" "Electrical Repair" "Fast Talk" "Mechanical Repair" "Navigate" "Persuade" "Psychology" )											xxx
+	"Union Activist"		( "Accounting" "Bargain" "Climb" "Conceal" "Own Language" "Fast Talk" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Law" "Operate Hvy. Machine" "Persuade" "Psychology" ) 		-xx
+//	Law Enforcement
+	"Agency Detective"	( "Bargain" "Fast Talk" "Fist/Punch" "Grapple" "Handgun" "Hide" "Law" "Library Use" "Persuade" "Psychology" "Sneak" "Track" )
+	"Bounty Hunter"		( "Accounting" "Bargain" "Climb" 1 { "Drive Auto" "Ride" } "Electrical Repair" "Fast Talk" "Handgun" "Rifle" "Shotgun" "Fist/Punch" "Grapple" "Head Butt" "Hide" "Jump" "Kick" "Law" "Persuade" "Psychology" "Sneak" )											xxx
+	"Federal Agents"		( "Bargain" "Drive Auto" "Fast Talk" "Handgun" "Rifle" "Shotgun" "Submachine Gun" "Fist/Punch" "Grapple" "Hide" "Law" "Persuade" "Sneak" "Spot Hidden" "Track" )		-xx
+	"Forensic Specialist"	( "Biology" "Chemistry" "Law" "Medicine" "Pharmacy" "Photography" "Spot Hidden" "Forensics" ) 												xxx
+	"Police Detective - 1920"	( "Bargain" "Drive Auto" "Fast Talk" "Handgun" "Law" "Listen" "Persuade" "Psychology" "Spot Hidden" "Track" )  							-xx
+	"Private Eye"		( "Accounting" "Bargain" "Climb" "Disguise" 1 { "Drive Auto" "Ride" } "Fast Talk" "Fist/Punch" "Grapple" "Head Butt" "Hide" "Jump" "Law" "Library Use" "Persuade" "Sneak" "Swim" "Track" ) xxx
+	"Uniformed Police Officer"	( "Nightstick" "Drive Auto" "Handgun" "Shotgun" "Fist/Punch" "Grapple" "Kick" "Law" "Persuade" "Track" ) 											xxx
+//	Legal Profession
+	"Bail Bondsman"		( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Law" "Persuade" "Psychology" ) 												xxx
+	"Judge"			( "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Law" "Library Use" "Persuade" "Psychology" ) 											xxx
+	"Practicing Attorney"	( "Accounting" "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Law" "Library Use" "Persuade" "Psychology" ) 											xxx
+	"Prosecuting Attorney"	( "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Law" "Library Use" "Persuade" "Psychology" ) 											xxx
+//	Medical Profession
+	"Dentist"			( "Accounting" "Bargain" "Credit Rating" "First Aid" "Library Use" "Medicine" "Persuade" "Pharmacy" "Psychology" )											xxx
+	"Forensic Surgeon"	( "Biology" "Credit Rating" "First Aid" "Forensics" "Library Use" "Medicine" "Pharmacy" )											xxx
+	"Nurse"			( "Biology" "Credit Rating" "First Aid" "Medicine" "Persuade" "Pharmacy" "Psychology" ) 											xxx
+	"Orderly"			( "Electrical Repair" "Fast Talk" "First Aid" "Hide" "Mechanical Repair" "Sneak" ) 											xxx
+	"Pharmacist"		( "Accounting" "Bargain" "Biology" "Credit Rating" "Own Language" "First Aid" "Other Language$Latin" "Library Use" "Pharmacy" "Persuade" "Psychology" ) 											xxx
+	"Physician"			( "Accounting" "Bargain" "Biology" "Credit Rating" "First Aid" "Other Language$Latin" "Library Use" "Medicine" "Persuade" "Pharmacy" "Psychoanalysis" "Psychology" ) 											xxx
+	"Plastic Surgeon"		( "Accounting" "Bargain" "Biology" "Credit Rating" "First Aid" "Other Language$Latin" "Library Use" "Medicine" "Pharmacy" "Persuade" "Psychology" ) 											xxx
+	"Technician"		( "Biology" "Chemistry" "Electrical Repair" "Library Use" "Mechanical Repair" "Medicine" "Pharmacy" "Photography" ) 											xxx
+//	Mental Health
+	"Alienist"			( "Accounting" "Bargain" "Biology" "Fast Talk" "Library Use" "Medicine" "Other Language" "Persuade" "Pharmacy" "Psychoanalysis" "Psychology" ) 												xxx
+	"Madhouse Attendant"	( "Nightstick" "Fast Talk" "First Aid" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Listen" "Persuade" "Psychology" "Sneak" ) 											xxx
+	"Psychologist"		( "Accounting" "Bargain" "Library Use" "Persuade" "Psychoanalysis" "Psychology" ) 											xxx
+//	Military
+	"Mercenary"			( "Bargain" "Bayonet*" "Climb" "Large Club" "Handgun" "Rifle" "Machine Gun" "Submachine Gun" "Shotgun" "Fist/Punch" "Garrote" "Grapple" "Head Butt" "Hide" "Jump" "Kick" "Fighting Knife*" "Navigate" "Track" "Sneak" "Swim" ) 											xxx
+	"Military Officer"	( "Bargain" "Credit Rating" "Dodge" "Fast Talk" "Fist/Punch" "Grapple" "Handgun" "Head Butt" "Hide" "Jump" "Kick" "Navigate" "Persuade" "Psychology" "Sneak" ) 												xxx
+	"Sailor"			( "Climb" "Fist/Punch" "Grapple" "Handgun" "Head Butt" "Jump" "Kick" "Navigate" "Rifle" "Swim" * ) xxx
+	"Soldier/Marine"		( "Bayonet*" "Fist/Punch" "Grapple" "Head Butt" "Kick" "Fighting Knife*" "Rifle" "Throw" * ) 											xxx
+//	Politics
+	"Ambassador"		( "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Other Language" "Persuade" ) 											xxx
+	"Boss"			( "Accounting" "Bargain" "Credit Rating" "Fast Talk" "Persuade" "Psychology" )											xxx
+	"Communist/Radical"	( "Large Club" "Fast Talk" "Fist/Punch" "Grapple" "Handgun" "Head Butt" "Kick" "Other Language" "Persuade" "Psychology" ) 											xxx
+	"Elected Official"	( "Bargain" "Credit Rating" "Own Language" "Fast Talk" "Persuade" "Psychology" )											xxx
+//	Scholarly Pursuits
+	"Field Researcher"	( "Accounting" "Bargain" "Climb" "Credit Rating" "First Aid" "Jump" "Library Use" "Other Language" "Persuade" * * * )											xxx
+	"Professor/Teacher"	( "Credit Rating" "Own Language" "Library Use" "Persuade" * * * ) 											xxx
+	"Researcher"		( "Credit Rating" "Own Language" "Library Use" * * * )											xxx
+	"Student/Intern"		( "Own Language" "Library Use" * * * ) 											xxx
+//	Miscellaneous Occupations
+	"Antique Dealer"		( "Accounting" "Bargain" "Credit Rating" "Drive Auto" "Fast Talk" "History" "Library Use" "Navigate" "Persuade" "Antiques" ) 											xxx
+	"Book Dealer"		( "Accounting" "Bargain" "Credit Rating" "Drive Auto" "Own Language" "History" "Library Use" "Navigate" "Other Language" "Persuade" ) 											xxx
+	"Dilettante - 1920"		( "Credit Rating" * * * * ) 											xxx
+	"Gardener/Grave Digger"	( "Bargain" * * * ) 											xxx
+	"Hobo - 1920"			( "Bargain" "Climb" "Fast Talk" "Hide" "Jump" "Listen" "Natural History" "Sneak" "Spot Hidden" "Persuade" )											xxx
+	"Librarian"			( "Accounting" "Own Language" "Library Use" "Other Language" * * * ) 											xxx
+	"Merchant Marine"		( "Anthropology" "Climb" "Electrical Repair" "Jump" "Mechanical Repair" "Operate Hvy. Machine" "Other Language" ) 											xxx
+	"Museum Curator"		( "Accounting" "Bargain" "Credit Rating" "Own Language" "Library Use" "Persuade" ) 											xxx
+	"Occultist"			( "Anthropology" "Own Language" "History" "Library Use" "Occult" "Other Language" )												xxx
+	"Parapsychologist - 1920"	( "Anthropology" "Electrical Repair" "Hypnotism" "Library Use" "Mechanical Repair" "Occult" "Photography" ) 											xxx
+	"Surveyor"			( "Accounting" "Bargain" "Library Use" "Natural History" "Navigate" "Photography" "Spot Hidden" )												xxx
+	"Undertaker"		( "Accounting" "Bargain" "Biology" "Credit Rating" "Persuade" "Psychology" ) 											xxx
+_END OCCUPATIONS
+
